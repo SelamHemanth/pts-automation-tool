@@ -1,0 +1,148 @@
+menu "nginx"
+
+config NGINX
+    bool "Enable nginx"
+    default n
+
+if NGINX
+
+menu "Connections"
+
+config NGINX_OPTION_1
+    bool "1: 1"
+    default n
+
+config NGINX_OPTION_2
+    bool "2: 20"
+    default n
+
+config NGINX_OPTION_3
+    bool "3: 100"
+    default n
+
+config NGINX_OPTION_4
+    bool "4: 200"
+    default n
+
+config NGINX_OPTION_5
+    bool "5: 500"
+    default n
+
+config NGINX_OPTION_6
+    bool "6: 1000"
+    default n
+
+config NGINX_OPTION_7
+    bool "7: 4000"
+    default n
+
+config NGINX_OPTION_8
+    bool "8: Test All Options"
+    default n
+
+endmenu
+
+endif
+
+endmenu
+
+menu "pgbench"
+
+config PGBENCH
+    bool "Enable pgbench"
+    default n
+
+if PGBENCH
+
+menu "Scaling Factor"
+
+config PGBENCH_OPTION_1
+    bool "1: 1"
+    default n
+
+config PGBENCH_OPTION_2
+    bool "2: 10"
+    default n
+
+config PGBENCH_OPTION_3
+    bool "3: 100"
+    default n
+
+config PGBENCH_OPTION_4
+    bool "4: 1000"
+    default n
+
+config PGBENCH_OPTION_5
+    bool "5: 10000"
+    default n
+
+config PGBENCH_OPTION_6
+    bool "6: 25000 [Intended for very large servers.]"
+    default n
+
+config PGBENCH_OPTION_7
+    bool "7: Test All Options"
+    default n
+
+endmenu
+
+menu "Clients"
+
+config PGBENCH_OPTION_8
+    bool "1: 1"
+    default n
+
+config PGBENCH_OPTION_9
+    bool "2: 50"
+    default n
+
+config PGBENCH_OPTION_10
+    bool "3: 100"
+    default n
+
+config PGBENCH_OPTION_11
+    bool "4: 250"
+    default n
+
+config PGBENCH_OPTION_12
+    bool "5: 500"
+    default n
+
+config PGBENCH_OPTION_13
+    bool "6: 800"
+    default n
+
+config PGBENCH_OPTION_14
+    bool "7: 1000"
+    default n
+
+config PGBENCH_OPTION_15
+    bool "8: 5000"
+    default n
+
+config PGBENCH_OPTION_16
+    bool "9: Test All Options"
+    default n
+
+endmenu
+
+menu "Mode"
+
+config PGBENCH_OPTION_17
+    bool "1: Read Write"
+    default n
+
+config PGBENCH_OPTION_18
+    bool "2: Read Only"
+    default n
+
+config PGBENCH_OPTION_19
+    bool "3: Test All Options"
+    default n
+
+endmenu
+
+endif
+
+endmenu
+

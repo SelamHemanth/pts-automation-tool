@@ -1,5 +1,4 @@
 #!/bin/bash
-
 echo "Starting GUI configuration..."
 
 # Initialize the .config file
@@ -7,7 +6,7 @@ echo "" > .config
 
 # Main menu with multiple option selection
 while true; do
-    MAIN_CHOICES=$(whiptail --title "Main Configuration" --checklist "Choose options (use Space to select/deselect):" 20 50 10 \
+    MAIN_CHOICES=$(whiptail --title "Main Configuration" --checklist "Choose options (use Space to select/deselect, use Tab to ok/cancel):" 20 50 10 \
         "nginx" "Enable nginx" OFF \
         "pgbench" "Enable pgbench" OFF 3>&1 1>&2 2>&3)
 
@@ -16,11 +15,10 @@ while true; do
         case $choice in
             "\"nginx\"")
                 echo "CONFIG_NGINX=y" >> .config
-
                 # Submenu for nginx options
                 while true; do
                     NGINX_OPTIONS=$(whiptail --title "nginx Configuration" --checklist "Choose options (use Space to select/deselect, use Tab to ok/cancel):" 20 50 10 \
-			"Connections:" "" OFF \
+                        "Connections:" "" OFF \
                         "1" "1" OFF \
                         "2" "20" OFF \
                         "3" "100" OFF \
@@ -95,34 +93,33 @@ while true; do
                 ;;
             "\"pgbench\"")
                 echo "CONFIG_PGBENCH=y" >> .config
-
                 # Submenu for pgbench
                 while true; do
                     PGBENCH_CHOICES=$(whiptail --title "pgbench Configuration" --checklist "Choose options (use Space to select/deselect, use Tab to ok/cancel):" 20 50 10 \
-			"Scaling Factor:" "" OFF \
+                        "Scaling Factor:" "" OFF \
 			"1" "1" OFF \
-			"2" "10" OFF \
-			"3" "100" OFF \
-			"4" "1000" OFF \
-			"5" "10000" OFF \
-			"6" "25000 [Intended for very large servers.]" OFF \
-			"7" "Test All Options" OFF \
-			"    " "" OFF \
+                        "2" "10" OFF \
+                        "3" "100" OFF \
+                        "4" "1000" OFF \
+                        "5" "10000" OFF \
+                        "6" "25000 [Intended for very large servers.]" OFF \
+                        "7" "Test All Options" OFF \
+			"" "" OFF\
 			"Clients:" "" OFF \
-			"8" "1" OFF \
-			"9" "50" OFF \
-			"10" "100" OFF \
-			"11" "250" OFF \
-			"12" "500" OFF \
-			"13" "800" OFF \
-		        "14" "1000" OFF \
-			"15" "5000" OFF \
-			"16" "Test All Options" OFF \
-			"    " "" OFF \
+                        "8" "1" OFF \
+                        "9" "50" OFF \
+                        "10" "100" OFF \
+                        "11" "250" OFF \
+                        "12" "500" OFF \
+                        "13" "800" OFF \
+                        "14" "1000" OFF \
+                        "15" "5000" OFF \
+                        "16" "Test All Options" OFF \
+			"" "" OFF \
 			"Mode:" "" OFF \
-			"17" "Read Write" OFF \
-			"18" "Read Only" OFF \	
-			"19" "Test All Options" OFF 3>&1 1>&2 2>&3)
+                        "17" "Read Write" OFF \
+                        "18" "Read Only" OFF \
+                        "19" "Test All Options" OFF 3>&1 1>&2 2>&3)
 
                     # Check if the user pressed Cancel
                     if [ $? -ne 0 ]; then
@@ -130,68 +127,68 @@ while true; do
                     fi
 
                     # Clear previous pgbench choices
-                    sed -i '/CONFIG_PGBENCH/d' .config
+                    sed -i '/CONFIG_PGBENCH_OPTION/d' .config
 
                     # Save selected pgbench choices
                     for option in $PGBENCH_CHOICES; do
                         case $option in
-				"\"1\"")
-					echo "CONFIG_PGBENCH_OPTION_1=y" >> .config
-					;;
-				"\"2\"")
-					echo "CONFIG_PGBENCH_OPTION_2=y" >> .config
-					;;
-				"\"3\"")
-					echo "CONFIG_PGBENCH_OPTION_3=y" >> .config
-					;;
-				"\"4\"")
-					echo "CONFIG_PGBENCH_OPTION_4=y" >> .config
-					;;
-				"\"5\"")
-					echo "CONFIG_PGBENCH_OPTION_5=y" >> .config
-					;;
-				"\"6\"")
-					echo "CONFIG_PGBENCH_OPTION_6=y" >> .config
-					;;
-				"\"7\"")
-					echo "CONFIG_PGBENCH_OPTION_7=y" >> .config
-					;;
-				"\"8\"")
-					echo "CONFIG_PGBENCH_OPTION_8=y" >> .config
-					;;
-				"\"9\"")
-					echo "CONFIG_PGBENCH_OPTION_9=y" >> .config
-					;;
-				"\"10\"")
-					echo "CONFIG_PGBENCH_OPTION_10=y" >> .config
-					;;
-				"\"11\"")
-					echo "CONFIG_PGBENCH_OPTION_11=y" >> .config
-					;;
-				"\"12\"")
-					echo "CONFIG_PGBENCH_OPTION_12=y" >> .config
-					;;
-				"\"13\"")
-					echo "CONFIG_PGBENCH_OPTION_13=y" >> .config
-					;;
-				"\"14\"")
-					echo "CONFIG_PGBENCH_OPTION_14=y" >> .config
-					;;
-				"\"15\"")
-					echo "CONFIG_PGBENCH_OPTION_15=y" >> .config
-					;;
-				"\"16\"")
-					echo "CONFIG_PGBENCH_OPTION_16=y" >> .config
-					;;
-				"\"17\"")
-					echo "CONFIG_PGBENCH_OPTION_17=y" >> .config
-					;;
-				"\"18\"")
-					echo "CONFIG_PGBENCH_OPTION_18=y" >> .config
-					;;
-				"\"19\"")
-					echo "CONFIG_PGBENCH_OPTION_19=y" >> .config
-					;;
+                            "\"1\"")
+                                echo "CONFIG_PGBENCH_OPTION_1=y" >> .config
+                                ;;
+                            "\"2\"")
+                                echo "CONFIG_PGBENCH_OPTION_2=y" >> .config
+                                ;;
+                            "\"3\"")
+                                echo "CONFIG_PGBENCH_OPTION_3=y" >> .config
+                                ;;
+                            "\"4\"")
+                                echo "CONFIG_PGBENCH_OPTION_4=y" >> .config
+                                ;;
+                            "\"5\"")
+                                echo "CONFIG_PGBENCH_OPTION_5=y" >> .config
+                                ;;
+                            "\"6\"")
+                                echo "CONFIG_PGBENCH_OPTION_6=y" >> .config
+                                ;;
+                            "\"7\"")
+                                echo "CONFIG_PGBENCH_OPTION_7=y" >> .config
+                                ;;
+                            "\"8\"")
+                                echo "CONFIG_PGBENCH_OPTION_8=y" >> .config
+                                ;;
+                            "\"9\"")
+                                echo "CONFIG_PGBENCH_OPTION_9=y" >> .config
+                                ;;
+                            "\"10\"")
+                                echo "CONFIG_PGBENCH_OPTION_10=y" >> .config
+                                ;;
+                            "\"11\"")
+                                echo "CONFIG_PGBENCH_OPTION_11=y" >> .config
+                                ;;
+                            "\"12\"")
+                                echo "CONFIG_PGBENCH_OPTION_12=y" >> .config
+                                ;;
+                            "\"13\"")
+                                echo "CONFIG_PGBENCH_OPTION_13=y" >> .config
+                                ;;
+                            "\"14\"")
+                                echo "CONFIG_PGBENCH_OPTION_14=y" >> .config
+                                ;;
+                            "\"15\"")
+                                echo "CONFIG_PGBENCH_OPTION_15=y" >> .config
+                                ;;
+                            "\"16\"")
+                                echo "CONFIG_PGBENCH_OPTION_16=y" >> .config
+                                ;;
+                            "\"17\"")
+                                echo "CONFIG_PGBENCH_OPTION_17=y" >> .config
+                                ;;
+                            "\"18\"")
+                                echo "CONFIG_PGBENCH_OPTION_18=y" >> .config
+                                ;;
+                            "\"19\"")
+                                echo "CONFIG_PGBENCH_OPTION_19=y" >> .config
+                                ;;
                         esac
                     done
 

@@ -7,7 +7,7 @@ RESULTS_PATH := $(HOME)/.phoronix-test-suite/test-results
 RESULT_SUFFIX := txt
 
 menuconfig:
-        @host_distro_out=$$(cat /etc/os-release); \
+	@host_distro_out=$$(cat /etc/os-release); \
         echo "OS Release Info: $${host_distro_out}"; \
         distroID=$$(echo "$${host_distro_out}" | grep "^ID=" | cut -d'=' -f2 | tr -d '"'); \
         echo "Detected distribution ID: $${distroID}"; \
@@ -97,7 +97,7 @@ install:
 			;; \
 		centos|rocky|openEuler|anolis) \
 			echo "Installing packages for centos/rocky"; \
-			sudo yum install -y  newt epel-release gcc git vim time gcc-c++ kernel-devel perl make numactl openssl openssl-devel libmpc mpfr ncurses-devel bison tar rsync libstdc++-devel libtool bison flex zlib zlib-devel pcre-devel openssl-devel elfutils-libelf-devel ncurses-devel createrepo rpm-build rpmdevtools cmake pcre-devel; \
+			sudo yum install -y  expect newt epel-release gcc git vim time gcc-c++ kernel-devel perl make numactl openssl openssl-devel libmpc mpfr ncurses-devel bison tar rsync libstdc++-devel libtool bison flex zlib zlib-devel pcre-devel openssl-devel elfutils-libelf-devel ncurses-devel createrepo rpm-build rpmdevtools cmake pcre-devel; \
 			sudo dnf install -y php-cli php-xml php-json; \
 			;; \
 		*) \

@@ -8,7 +8,8 @@ echo "" > .config
 while true; do
     MAIN_CHOICES=$(whiptail --title "Main Configuration" --checklist "Choose options (use Space to select/deselect, use Tab to ok/cancel):" 20 50 10 \
         "nginx" "Enable nginx" OFF \
-        "pgbench" "Enable pgbench" OFF 3>&1 1>&2 2>&3)
+        "pgbench" "Enable pgbench" OFF \
+        "stress-ng" "Enable pgbench" OFF 3>&1 1>&2 2>&3)
 
     # Process main menu choices
     for choice in $MAIN_CHOICES; do
@@ -68,7 +69,7 @@ while true; do
 
                     # Ask if the user wants to save, go back, or exit
                     SAVE_EXIT=$(whiptail --title "Save and Exit" --menu "Choose an option:" 15 50 4 \
-                        "1" "Save and Back" \
+                        "1" "Save and Continue" \
                         "2" "Save and Exit" \
                         "3" "Back to Main Menu" \
                         "4" "Exit" 3>&1 1>&2 2>&3)
@@ -194,7 +195,245 @@ while true; do
 
                     # Ask if the user wants to save, go back, or exit
                     SAVE_EXIT=$(whiptail --title "Save and Exit" --menu "Choose an option:" 15 50 4 \
-                        "1" "Save and Back" \
+                        "1" "Save and Continue" \
+                        "2" "Save and Exit" \
+                        "3" "Back to Main Menu" \
+                        "4" "Exit" 3>&1 1>&2 2>&3)
+
+                    case $SAVE_EXIT in
+                        "1")
+                            echo "Configuration saved."
+                            break
+                            ;;
+                        "2")
+                            echo "Configuration saved."
+                            exit 0
+                            ;;
+                        "3")
+                            break
+                            ;;
+                        "4")
+                            exit 0
+                            ;;
+                    esac
+                done
+                ;;
+            "\"stress-ng\"")
+                echo "CONFIG_STRESSNG=y" >> .config
+                # Submenu for stress-ng
+                while true; do
+                    STRESSNG_CHOICES=$(whiptail --title "stress-ng Configuration" --checklist "Choose options (use Space to select/deselect, use Tab to ok/cancel):" 20 50 10 \
+                        "Test:" "" OFF \
+                        "1" "CPU Stress" OFF \
+                        "2" "Crypto" OFF \
+                        "3" "Memory Copying" OFF \
+                        "4" "Glibc Qsort Data Sorting" OFF \
+                        "5" "Glibc C String Functions" OFF \
+                        "6" "Vector Math" OFF \
+                        "7" "Matrix Math" OFF \
+                        "8" "Forking" OFF \
+                        "9" "System V Message Passing" OFF \
+                        "10" "Semaphores" OFF \
+                        "11" "Socket Activity" OFF \
+                        "12" "Context Switching" OFF \
+                        "13" "Atomic" OFF \
+                        "14" "CPU Cache" OFF \
+                        "15" "Malloc" OFF \
+                        "16" "MEMFD" OFF \
+                        "17" "MMAP" OFF \
+                        "18" "NUMA" OFF \
+                        "19" "x86_64 RdRand" OFF \
+                        "20" "SENDFILE" OFF \
+                        "21" "IO_uring" OFF \
+                        "22" "Futex" OFF \
+                        "23" "Mutex" OFF \
+                        "24" "Function Call" OFF \
+                        "25" "Poll" OFF \
+                        "26" "Hash" OFF \
+                        "27" "Pthread" OFF \
+                        "28" "Zlib" OFF \
+                        "29" "Floating Point" OFF \
+                        "30" "Fused Multiply-Add" OFF \
+                        "31" "Pipe" OFF \
+                        "32" "Matrix 3D Math" OFF \
+                        "33" "AVL Tree" OFF \
+                        "34" "Vector Floating Point" OFF \
+                        "35" "Vector Shuffle" OFF \
+                        "36" "Wide Vector Math" OFF \
+                        "37" "Cloning" OFF \
+                        "38" "AVX-512 VNNI" OFF \
+                        "39" "Mixed Scheduler" OFF \
+                        "40" "Exponential Math" OFF \
+                        "41" "Fractal Generator" OFF \
+                        "42" "Logarithmic Math" OFF \
+                        "43" "Power Math" OFF \
+                        "44" "Trigonometric Math" OFF \
+                        "45" "Jpeg Compression" OFF \
+                        "46" "Bitonic Integer Sort" OFF \
+                        "47" "Radix String Sort" OFF \
+                        "48" "Test All Options" OFF 3>&1 1>&2 2>&3)
+
+                    # Check if the user pressed Cancel
+                    if [ $? -ne 0 ]; then
+                        break
+                    fi
+
+                    # Clear previous stress-ng choices
+                    sed -i '/CONFIG_STRESSNG_OPTION/d' .config
+
+                    # Save selected stress-ng choices
+                    for option in $STRESSNG_CHOICES; do
+                        case $option in
+                            "\"1\"")
+                                echo "CONFIG_STRESSNG_OPTION_1=y" >> .config
+                                ;;
+                            "\"2\"")
+                                echo "CONFIG_STRESSNG_OPTION_2=y" >> .config
+                                ;;
+                            "\"3\"")
+                                echo "CONFIG_STRESSNG_OPTION_3=y" >> .config
+                                ;;
+                            "\"4\"")
+                                echo "CONFIG_STRESSNG_OPTION_4=y" >> .config
+                                ;;
+                            "\"5\"")
+                                echo "CONFIG_STRESSNG_OPTION_5=y" >> .config
+                                ;;
+                            "\"6\"")
+                                echo "CONFIG_STRESSNG_OPTION_6=y" >> .config
+                                ;;
+                            "\"7\"")
+                                echo "CONFIG_STRESSNG_OPTION_7=y" >> .config
+                                ;;
+                            "\"8\"")
+                                echo "CONFIG_STRESSNG_OPTION_8=y" >> .config
+                                ;;
+                            "\"9\"")
+                                echo "CONFIG_STRESSNG_OPTION_9=y" >> .config
+                                ;;
+                            "\"10\"")
+                                echo "CONFIG_STRESSNG_OPTION_10=y" >> .config
+                                ;;
+                            "\"11\"")
+                                echo "CONFIG_STRESSNG_OPTION_11=y" >> .config
+                                ;;
+                            "\"12\"")
+                                echo "CONFIG_STRESSNG_OPTION_12=y" >> .config
+                                ;;
+                            "\"13\"")
+                                echo "CONFIG_STRESSNG_OPTION_13=y" >> .config
+                                ;;
+                            "\"14\"")
+                                echo "CONFIG_STRESSNG_OPTION_14=y" >> .config
+                                ;;
+                            "\"15\"")
+                                echo "CONFIG_STRESSNG_OPTION_15=y" >> .config
+                                ;;
+                            "\"16\"")
+                                echo "CONFIG_STRESSNG_OPTION_16=y" >> .config
+                                ;;
+                            "\"17\"")
+                                echo "CONFIG_STRESSNG_OPTION_17=y" >> .config
+                                ;;
+                            "\"18\"")
+                                echo "CONFIG_STRESSNG_OPTION_18=y" >> .config
+                                ;;
+                            "\"19\"")
+                                echo "CONFIG_STRESSNG_OPTION_19=y" >> .config
+				;;
+                            "\"20\"")
+                                echo "CONFIG_STRESSNG_OPTION_20=y" >> .config
+                                ;;
+                            "\"21\"")
+                                echo "CONFIG_STRESSNG_OPTION_21=y" >> .config
+                                ;;
+                            "\"22\"")
+                                echo "CONFIG_STRESSNG_OPTION_22=y" >> .config
+                                ;;
+                            "\"23\"")
+                                echo "CONFIG_STRESSNG_OPTION_23=y" >> .config
+                                ;;
+                            "\"24\"")
+                                echo "CONFIG_STRESSNG_OPTION_24=y" >> .config
+                                ;;
+                            "\"25\"")
+                                echo "CONFIG_STRESSNG_OPTION_25=y" >> .config
+                                ;;
+                            "\"26\"")
+                                echo "CONFIG_STRESSNG_OPTION_26=y" >> .config
+                                ;;
+                            "\"27\"")
+                                echo "CONFIG_STRESSNG_OPTION_27=y" >> .config
+                                ;;
+                            "\"28\"")
+                                echo "CONFIG_STRESSNG_OPTION_28=y" >> .config
+                                ;;
+                            "\"29\"")
+                                echo "CONFIG_STRESSNG_OPTION_29=y" >> .config
+                                ;;
+                            "\"30\"")
+                                echo "CONFIG_STRESSNG_OPTION_30=y" >> .config
+                                ;;
+                            "\"31\"")
+                                echo "CONFIG_STRESSNG_OPTION_31=y" >> .config
+                                ;;
+                            "\"32\"")
+                                echo "CONFIG_STRESSNG_OPTION_32=y" >> .config
+                                ;;
+                            "\"33\"")
+                                echo "CONFIG_STRESSNG_OPTION_33=y" >> .config
+                                ;;
+                            "\"34\"")
+                                echo "CONFIG_STRESSNG_OPTION_34=y" >> .config
+                                ;;
+                            "\"35\"")
+                                echo "CONFIG_STRESSNG_OPTION_35=y" >> .config
+                                ;;
+                            "\"36\"")
+                                echo "CONFIG_STRESSNG_OPTION_36=y" >> .config
+                                ;;
+                            "\"37\"")
+                                echo "CONFIG_STRESSNG_OPTION_37=y" >> .config
+                                ;;
+                            "\"38\"")
+                                echo "CONFIG_STRESSNG_OPTION_38=y" >> .config
+                                ;;
+                            "\"39\"")
+                                echo "CONFIG_STRESSNG_OPTION_39=y" >> .config
+                                ;;
+                            "\"40\"")
+                                echo "CONFIG_STRESSNG_OPTION_40=y" >> .config
+                                ;;
+                            "\"41\"")
+                                echo "CONFIG_STRESSNG_OPTION_41=y" >> .config
+                                ;;
+                            "\"42\"")
+                                echo "CONFIG_STRESSNG_OPTION_42=y" >> .config
+                                ;;
+                            "\"43\"")
+                                echo "CONFIG_STRESSNG_OPTION_43=y" >> .config
+                                ;;
+                            "\"44\"")
+                                echo "CONFIG_STRESSNG_OPTION_44=y" >> .config
+                                ;;
+                            "\"45\"")
+                                echo "CONFIG_STRESSNG_OPTION_45=y" >> .config
+                                ;;
+                            "\"46\"")
+                                echo "CONFIG_STRESSNG_OPTION_46=y" >> .config
+                                ;;
+                            "\"47\"")
+                                echo "CONFIG_STRESSNG_OPTION_47=y" >> .config
+                                ;;
+                            "\"48\"")
+                                echo "CONFIG_STRESSNG_OPTION_48=y" >> .config
+                                ;;
+                        esac
+                    done
+
+                    # Ask if the user wants to save, go back, or exit
+                    SAVE_EXIT=$(whiptail --title "Save and Exit" --menu "Choose an option:" 15 50 4 \
+                        "1" "Save and Continue" \
                         "2" "Save and Exit" \
                         "3" "Back to Main Menu" \
                         "4" "Exit" 3>&1 1>&2 2>&3)
@@ -222,7 +461,7 @@ while true; do
 
     # Ask if the user wants to save and exit, go back, or cancel
     SAVE_EXIT=$(whiptail --title "Save and Exit" --menu "Choose an option:" 15 50 4 \
-        "1" "Save and Back" \
+        "1" "Save and Continue" \
         "2" "Save and Exit" \
         "3" "Back" \
         "4" "Exit" 3>&1 1>&2 2>&3)

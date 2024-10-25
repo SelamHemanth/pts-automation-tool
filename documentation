@@ -6,7 +6,10 @@ Welcome to the Phoronix Test Suite Automation project! This project automates th
 Description
 -----------
 •  pts/nginx		: This benchmark measures the performance of the Nginx web server, focusing on handling concurrent web requests, throughput, and response times.
+
 •  pts/pgbench		: Pgbench is a benchmarking tool for PostgreSQL. It simulates various database operations to measure the performance of PostgreSQL databases, focusing on transaction processing performance.
+
+•  pts/pgbench          : Stress NG is a tool for stress testing a computer system. It loads and exercises various components (CPU, memory, I/O, etc.) to assess system stability and performance under heavy load.
 
 Getting Started
 ---------------

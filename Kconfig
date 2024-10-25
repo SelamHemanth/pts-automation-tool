@@ -146,3 +146,211 @@ endif
 
 endmenu
 
+menu "stress-ng"
+
+config STRESSNG
+    bool "Enable stress-ng"
+    default n
+
+if STRESSNG
+
+menu "Tests"
+
+config STRESSNG_OPTION_1
+    bool "1: CPU Stress"
+    default n
+
+config STRESSNG_OPTION_2
+    bool "2: Crypto"
+    default n
+
+config STRESSNG_OPTION_3
+    bool "3: Memory Copying"
+    default n
+
+config STRESSNG_OPTION_4
+    bool "4: Glibc Qsort Data Sorting"
+    default n
+
+config STRESSNG_OPTION_5
+    bool "5: Glibc C String Functions"
+    default n
+
+config STRESSNG_OPTION_6
+    bool "6: Vector Math"
+    default n
+
+config STRESSNG_OPTION_7
+    bool "7: Matrix Math"
+    default n
+
+config STRESSNG_OPTION_8
+    bool "8: Forking"
+    default n
+
+config STRESSNG_OPTION_9
+    bool "9: System V Message Passing"
+    default n
+
+config STRESSNG_OPTION_10
+    bool "10: Semaphores"
+    default n
+
+config STRESSNG_OPTION_11
+    bool "11: Socket Activity"
+    default n
+
+config STRESSNG_OPTION_12
+    bool "12: Context Switching"
+    default n
+
+config STRESSNG_OPTION_13
+    bool "13: Atomic"
+    default n
+
+config STRESSNG_OPTION_14
+    bool "14: CPU Cache"
+    default n
+
+config STRESSNG_OPTION_15
+    bool "15: Malloc"
+    default n
+
+config STRESSNG_OPTION_16
+    bool "16: MEMFD"
+    default n
+
+config STRESSNG_OPTION_17
+    bool "17: MMAP"
+    default n
+
+config STRESSNG_OPTION_18
+    bool "18: NUMA"
+    default n
+
+config STRESSNG_OPTION_19
+    bool "19: x86_64 RdRand"
+    default n
+
+config STRESSNG_OPTION_20
+    bool "20: SENDFILE"
+    default n
+
+config STRESSNG_OPTION_21
+    bool "21: IO_uringG"
+    default n
+
+config STRESSNG_OPTION_22
+    bool "22: Futex"
+    default n
+
+config STRESSNG_OPTION_23
+    bool "23: Mutex"
+    default n
+
+config STRESSNG_OPTION_24
+    bool "24: Function Call"
+    default n
+
+config STRESSNG_OPTION_25
+    bool "25: Poll"
+    default n
+
+config STRESSNG_OPTION_26
+    bool "26: Hash"
+    default n
+
+config STRESSNG_OPTION_27
+    bool "27: Pthread"
+    default n
+
+config STRESSNG_OPTION_28
+    bool "28: Zlib"
+    default n
+
+config STRESSNG_OPTION_29
+    bool "29: Floating Point"
+    default n
+
+config STRESSNG_OPTION_30
+    bool "30: Fused Multiply-Add"
+    default n
+
+config STRESSNG_OPTION_31
+    bool "31: Pipe"
+    default n
+
+config STRESSNG_OPTION_32
+    bool "32: Matrix 3D Math"
+    default n
+
+config STRESSNG_OPTION_33
+    bool "33: AVL Tree"
+    default n
+
+config STRESSNG_OPTION_34
+    bool "34: Vector Floating Point"
+    default n
+
+config STRESSNG_OPTION_35
+    bool "35: Vector Shuffle"
+    default n
+
+config STRESSNG_OPTION_36
+    bool "36: Wide Vector Math"
+    default n
+
+config STRESSNG_OPTION_37
+    bool "37: Cloning"
+    default n
+
+config STRESSNG_OPTION_38
+    bool "38: AVX-512 VNNI"
+    default n
+
+config STRESSNG_OPTION_39
+    bool "39: Mixed Scheduler"
+    default n
+
+config STRESSNG_OPTION_40
+    bool "40: Exponential Math"
+    default n
+
+config STRESSNG_OPTION_41
+    bool "41: Fractal Generator"
+    default n
+
+config STRESSNG_OPTION_42
+    bool "42: Logarithmic Math"
+    default n
+
+config STRESSNG_OPTION_43
+    bool "43: Power Math"
+    default n
+
+config STRESSNG_OPTION_44
+    bool "44: Trigonometric Math"
+    default n
+
+config STRESSNG_OPTION_45
+    bool "45: Jpeg Compression"
+    default n
+
+config STRESSNG_OPTION_46
+    bool "46: Bitonic Integer Sort"
+    default n
+
+config STRESSNG_OPTION_47
+    bool "47: Radix String Sort"
+    default n
+
+config STRESSNG_OPTION_48
+    bool "48: Test All Options"
+    default n
+
+endmenu
+
+endif
+
+endmenu
+

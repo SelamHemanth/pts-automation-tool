@@ -69,19 +69,76 @@ saveconfig:
 	@sed -i 's/,$$//' .config.options
 	@echo "" >> .config.options
 
+	@echo -n "STRESSNG_OPTIONS=" >> .config.options
+	@if grep -q "CONFIG_STRESSNG_OPTION_1=y" .config; then echo -n "1," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_2=y" .config; then echo -n "2," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_3=y" .config; then echo -n "3," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_4=y" .config; then echo -n "4," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_5=y" .config; then echo -n "5," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_6=y" .config; then echo -n "6," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_7=y" .config; then echo -n "7," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_8=y" .config; then echo -n "8," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_9=y" .config; then echo -n "9," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_10=y" .config; then echo -n "10," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_11=y" .config; then echo -n "11," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_12=y" .config; then echo -n "12," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_13=y" .config; then echo -n "13," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_14=y" .config; then echo -n "14," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_15=y" .config; then echo -n "15," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_16=y" .config; then echo -n "16," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_17=y" .config; then echo -n "17," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_18=y" .config; then echo -n "18," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_19=y" .config; then echo -n "19," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_20=y" .config; then echo -n "20," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_21=y" .config; then echo -n "21," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_22=y" .config; then echo -n "22," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_23=y" .config; then echo -n "23," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_24=y" .config; then echo -n "24," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_25=y" .config; then echo -n "25," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_26=y" .config; then echo -n "26," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_27=y" .config; then echo -n "27," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_28=y" .config; then echo -n "28," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_29=y" .config; then echo -n "29," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_30=y" .config; then echo -n "30," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_31=y" .config; then echo -n "31," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_32=y" .config; then echo -n "32," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_33=y" .config; then echo -n "33," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_34=y" .config; then echo -n "34," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_35=y" .config; then echo -n "35," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_36=y" .config; then echo -n "36," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_37=y" .config; then echo -n "37," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_38=y" .config; then echo -n "38," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_39=y" .config; then echo -n "39," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_40=y" .config; then echo -n "40," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_41=y" .config; then echo -n "41," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_42=y" .config; then echo -n "42," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_43=y" .config; then echo -n "43," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_44=y" .config; then echo -n "44," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_45=y" .config; then echo -n "45," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_46=y" .config; then echo -n "46," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_47=y" .config; then echo -n "47," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_48=y" .config; then echo -n "48," >> .config.options; fi
+	@sed -i 's/,$$//' .config.options
+	@echo "" >> .config.options
+
 	@cat .config.options
 	@echo "Configuration saved to .config.options"
 
 run: saveconfig
 	@if grep -q "CONFIG_NGINX=y" .config; then \
-		./pts_nginx.sh; \
+		./pts_nginx; \
 	else \
 		echo "CONFIG_NGINX is not enabled in .config. Skipping test."; \
 	fi
 	@if grep -q "CONFIG_PGBENCH=y" .config; then \
-		./pts_pgbench.sh; \
+		./pts_pgbench; \
 	else \
 		echo "CONFIG_PGBENCH is not enabled in .config. Skipping test."; \
+	fi
+	@if grep -q "CONFIG_STRESSNG=y" .config; then \
+		./pts_stress-ng; \
+	else \
+		echo "CONFIG_STRESSNG is not enabled in .config. Skipping test."; \
 	fi
 
 install:
@@ -97,7 +154,7 @@ install:
 			;; \
 		centos|rocky|openEuler|anolis) \
 			echo "Installing packages for centos/rocky"; \
-			sudo yum install -y  expect newt epel-release gcc git vim time gcc-c++ kernel-devel perl make numactl openssl openssl-devel libmpc mpfr ncurses-devel bison tar rsync libstdc++-devel libtool bison flex zlib zlib-devel pcre-devel openssl-devel elfutils-libelf-devel ncurses-devel createrepo rpm-build rpmdevtools cmake pcre-devel; \
+			sudo yum install -y libjpeg-turbo-devel libjpeg-devel libicu-devel expect newt epel-release gcc git vim time gcc-c++ kernel-devel perl make numactl openssl openssl-devel libmpc mpfr ncurses-devel bison tar rsync libstdc++-devel libtool bison flex zlib zlib-devel pcre-devel openssl-devel elfutils-libelf-devel ncurses-devel createrepo rpm-build rpmdevtools cmake pcre-devel; \
 			sudo dnf install -y php-cli php-xml php-json; \
 			;; \
 		*) \
@@ -111,15 +168,20 @@ install:
 	cd /tmp/phoronix-test-suite && sudo ./install-sh; \
 	phoronix-test-suite version
 
+# Target to display the contents of result files
 showresult:
 	@echo "Displaying contents of result files:"
 	@echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
 	@echo " "
-	@for file in $(RESULT_FILES); do \
-		echo "Contents of $$file:"; \
-		cat $$file; \
-		echo ""; \
-	done
+	@for dir in $(RESULTS_PATH)/*; do \
+                if [ -d $$dir ]; then \
+                        for file in $$dir/*.txt; do \
+                                echo "Contents of $$file:"; \
+                                cat $$file; \
+                                echo ""; \
+                        done; \
+                fi; \
+        done
 
 saveresult:
 	@./saveresult

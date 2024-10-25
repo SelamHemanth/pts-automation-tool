@@ -121,24 +121,47 @@ saveconfig:
 	@sed -i 's/,$$//' .config.options
 	@echo "" >> .config.options
 
+	@echo -n "REDIS_OPTIONS1=" >> .config.options
+	@if grep -q "CONFIG_REDIS_OPTION_1=y" .config; then echo -n "1," >> .config.options; fi
+	@if grep -q "CONFIG_REDIS_OPTION_2=y" .config; then echo -n "2," >> .config.options; fi
+	@if grep -q "CONFIG_REDIS_OPTION_3=y" .config; then echo -n "3," >> .config.options; fi
+	@if grep -q "CONFIG_REDIS_OPTION_4=y" .config; then echo -n "4," >> .config.options; fi
+	@if grep -q "CONFIG_REDIS_OPTION_5=y" .config; then echo -n "5," >> .config.options; fi
+	@if grep -q "CONFIG_REDIS_OPTION_6=y" .config; then echo -n "6," >> .config.options; fi
+	@sed -i 's/,$$//' .config.options
+	@echo "" >> .config.options
+
+	@echo -n "REDIS_OPTIONS2=" >> .config.options
+	@if grep -q "CONFIG_REDIS_OPTION_7=y" .config; then echo -n "1," >> .config.options; fi
+	@if grep -q "CONFIG_REDIS_OPTION_8=y" .config; then echo -n "2," >> .config.options; fi
+	@if grep -q "CONFIG_REDIS_OPTION_9=y" .config; then echo -n "3," >> .config.options; fi
+	@if grep -q "CONFIG_REDIS_OPTION_10=y" .config; then echo -n "4," >> .config.options; fi
+	@sed -i 's/,$$//' .config.options
+	@echo "" >> .config.options
+
 	@cat .config.options
 	@echo "Configuration saved to .config.options"
 
 run: saveconfig
 	@if grep -q "CONFIG_NGINX=y" .config; then \
-		./pts_nginx; \
+		./runs/pts_nginx; \
 	else \
 		echo "CONFIG_NGINX is not enabled in .config. Skipping test."; \
 	fi
 	@if grep -q "CONFIG_PGBENCH=y" .config; then \
-		./pts_pgbench; \
+		./runs/pts_pgbench; \
 	else \
 		echo "CONFIG_PGBENCH is not enabled in .config. Skipping test."; \
 	fi
 	@if grep -q "CONFIG_STRESSNG=y" .config; then \
-		./pts_stress-ng; \
+		./runs/pts_stress-ng; \
 	else \
 		echo "CONFIG_STRESSNG is not enabled in .config. Skipping test."; \
+	fi
+	@if grep -q "CONFIG_REDIS=y" .config; then \
+		./runs/pts_redis; \
+	else \
+		echo "CONFIG_REDIS is not enabled in .config. Skipping test."; \
 	fi
 
 install:

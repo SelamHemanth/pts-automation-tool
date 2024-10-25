@@ -354,3 +354,62 @@ endif
 
 endmenu
 
+menu "redis"
+
+config REDIS
+    bool "Enable redis"
+    default n
+
+if REDIS
+
+menu "Test"
+
+config REDIS_OPTION_1
+    bool "1: SET"
+    default n
+
+config REDIS_OPTION_2
+    bool "2: GET"
+    default n
+
+config REDIS_OPTION_3
+    bool "3: LPUSH"
+    default n
+
+config REDIS_OPTION_4
+    bool "4: LPOP"
+    default n
+
+config REDIS_OPTION_5
+    bool "5: SADD"
+    default n
+
+config REDIS_OPTION_6
+    bool "6: Test All Options"
+    default n
+
+endmenu
+
+menu "Parallel Connections"
+
+config REDIS_OPTION_7
+    bool "1: 50"
+    default n
+
+config REDIS_OPTION_8
+    bool "2: 50"
+    default n
+
+config REDIS_OPTION_9
+    bool "3: 1000"
+    default n
+
+config REDIS_OPTION_10
+    bool "4: Test All Options"
+    default n
+
+endmenu
+
+endif
+
+endmenu

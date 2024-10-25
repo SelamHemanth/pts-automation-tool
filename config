@@ -9,7 +9,8 @@ while true; do
     MAIN_CHOICES=$(whiptail --title "Main Configuration" --checklist "Choose options (use Space to select/deselect, use Tab to ok/cancel):" 20 50 10 \
         "nginx" "Enable nginx" OFF \
         "pgbench" "Enable pgbench" OFF \
-        "stress-ng" "Enable pgbench" OFF 3>&1 1>&2 2>&3)
+        "stress-ng" "Enable stress-ng" OFF \
+        "redis" "Enable redis" OFF 3>&1 1>&2 2>&3)
 
     # Process main menu choices
     for choice in $MAIN_CHOICES; do
@@ -427,6 +428,94 @@ while true; do
                                 ;;
                             "\"48\"")
                                 echo "CONFIG_STRESSNG_OPTION_48=y" >> .config
+                                ;;
+                        esac
+                    done
+
+                    # Ask if the user wants to save, go back, or exit
+                    SAVE_EXIT=$(whiptail --title "Save and Exit" --menu "Choose an option:" 15 50 4 \
+                        "1" "Save and Continue" \
+                        "2" "Save and Exit" \
+                        "3" "Back to Main Menu" \
+                        "4" "Exit" 3>&1 1>&2 2>&3)
+
+                    case $SAVE_EXIT in
+                        "1")
+                            echo "Configuration saved."
+                            break
+                            ;;
+                        "2")
+                            echo "Configuration saved."
+                            exit 0
+                            ;;
+                        "3")
+                            break
+                            ;;
+                        "4")
+                            exit 0
+                            ;;
+                    esac
+                done
+                ;;
+            "\"redis\"")
+                echo "CONFIG_REDIS=y" >> .config
+                # Submenu for redis
+                while true; do
+                    REDIS_CHOICES=$(whiptail --title "redis Configuration" --checklist "Choose options (use Space to select/deselect, use Tab to ok/cancel):" 20 50 10 \
+                        "Test:" "" OFF \
+                        "1" "SET" OFF \
+                        "2" "GET" OFF \
+                        "3" "LPUSH" OFF \
+                        "4" "LPOP" OFF \
+                        "5" "SADD" OFF \
+                        "6" "Test All Options" OFF \
+                        "" "" OFF\
+                        "Parallel Connections:" "" OFF \
+                        "7" "50" OFF \
+                        "8" "500" OFF \
+                        "9" "1000" OFF \
+                        "10" "Test All Options" OFF 3>&1 1>&2 2>&3)
+
+                    # Check if the user pressed Cancel
+                    if [ $? -ne 0 ]; then
+                        break
+                    fi
+
+                    # Clear previous redis choices
+                    sed -i '/CONFIG_REDIS_OPTION/d' .config
+
+                    # Save selected redis choices
+                    for option in $REDIS_CHOICES; do
+                        case $option in
+                            "\"1\"")
+                                echo "CONFIG_REDIS_OPTION_1=y" >> .config
+                                ;;
+                            "\"2\"")
+                                echo "CONFIG_REDIS_OPTION_2=y" >> .config
+                                ;;
+                            "\"3\"")
+                                echo "CONFIG_REDIS_OPTION_3=y" >> .config
+                                ;;
+                            "\"4\"")
+                                echo "CONFIG_REDIS_OPTION_4=y" >> .config
+                                ;;
+                            "\"5\"")
+                                echo "CONFIG_REDIS_OPTION_5=y" >> .config
+                                ;;
+                            "\"6\"")
+                                echo "CONFIG_REDIS_OPTION_6=y" >> .config
+                                ;;
+                            "\"7\"")
+                                echo "CONFIG_REDIS_OPTION_7=y" >> .config
+                                ;;
+                            "\"8\"")
+                                echo "CONFIG_REDIS_OPTION_8=y" >> .config
+                                ;;
+                            "\"9\"")
+                                echo "CONFIG_REDIS_OPTION_9=y" >> .config
+                                ;;
+                            "\"10\"")
+                                echo "CONFIG_REDIS_OPTION_10=y" >> .config
                                 ;;
                         esac
                     done

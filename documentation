@@ -11,6 +11,8 @@ Description
 
 •  pts/pgbench          : Stress NG is a tool for stress testing a computer system. It loads and exercises various components (CPU, memory, I/O, etc.) to assess system stability and performance under heavy load.
 
+•  pts/redis		: The Redis benchmark evaluates the performance of Redis, an in-memory data structure store. It measures throughput and latency for various data operations. 
+
 Getting Started
 ---------------
 

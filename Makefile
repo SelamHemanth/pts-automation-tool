@@ -139,6 +139,18 @@ saveconfig:
 	@sed -i 's/,$$//' .config.options
 	@echo "" >> .config.options
 
+	@echo -n "OPENSSL_OPTIONS=" >> .config.options
+	@if grep -q "CONFIG_OPENSSL_OPTION_1=y" .config; then echo -n "1," >> .config.options; fi
+	@if grep -q "CONFIG_OPENSSL_OPTION_2=y" .config; then echo -n "2," >> .config.options; fi
+	@if grep -q "CONFIG_OPENSSL_OPTION_3=y" .config; then echo -n "3," >> .config.options; fi
+	@if grep -q "CONFIG_OPENSSL_OPTION_4=y" .config; then echo -n "4," >> .config.options; fi
+	@if grep -q "CONFIG_OPENSSL_OPTION_5=y" .config; then echo -n "5," >> .config.options; fi
+	@if grep -q "CONFIG_OPENSSL_OPTION_6=y" .config; then echo -n "6," >> .config.options; fi
+	@if grep -q "CONFIG_OPENSSL_OPTION_7=y" .config; then echo -n "7," >> .config.options; fi
+	@if grep -q "CONFIG_OPENSSL_OPTION_8=y" .config; then echo -n "7," >> .config.options; fi
+	@sed -i 's/,$$//' .config.options
+	@echo "" >> .config.options
+
 	@cat .config.options
 	@echo "Configuration saved to .config.options"
 
@@ -162,6 +174,11 @@ run: saveconfig
 		./runs/pts_redis; \
 	else \
 		echo "CONFIG_REDIS is not enabled in .config. Skipping test."; \
+	fi
+	@if grep -q "CONFIG_OPENSSL=y" .config; then \
+		./runs/pts_openssl; \
+	else \
+		echo "CONFIG_OPENSSL is not enabled in .config. Skipping test."; \
 	fi
 
 install:

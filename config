@@ -10,7 +10,8 @@ while true; do
         "nginx" "Enable nginx" OFF \
         "pgbench" "Enable pgbench" OFF \
         "stress-ng" "Enable stress-ng" OFF \
-        "redis" "Enable redis" OFF 3>&1 1>&2 2>&3)
+        "redis" "Enable redis" OFF \
+        "openssl" "Enable openssl" OFF 3>&1 1>&2 2>&3)
 
     # Process main menu choices
     for choice in $MAIN_CHOICES; do
@@ -516,6 +517,84 @@ while true; do
                                 ;;
                             "\"10\"")
                                 echo "CONFIG_REDIS_OPTION_10=y" >> .config
+                                ;;
+                        esac
+                    done
+
+                    # Ask if the user wants to save, go back, or exit
+                    SAVE_EXIT=$(whiptail --title "Save and Exit" --menu "Choose an option:" 15 50 4 \
+                        "1" "Save and Continue" \
+                        "2" "Save and Exit" \
+                        "3" "Back to Main Menu" \
+                        "4" "Exit" 3>&1 1>&2 2>&3)
+
+                    case $SAVE_EXIT in
+                        "1")
+                            echo "Configuration saved."
+                            break
+                            ;;
+                        "2")
+                            echo "Configuration saved."
+                            exit 0
+                            ;;
+                        "3")
+                            break
+                            ;;
+                        "4")
+                            exit 0
+                            ;;
+                    esac
+                done
+                ;;
+            "\"openssl\"")
+                echo "CONFIG_OPENSSL=y" >> .config
+                # Submenu for openssl
+                while true; do
+                    OPENSSL_CHOICES=$(whiptail --title "openssl Configuration" --checklist "Choose options (use Space to select/deselect, use Tab to ok/cancel):" 20 50 10 \
+                        "Algorithm:" "" OFF \
+                        "1" "RSA4096" OFF \
+                        "2" "SHA256" OFF \
+                        "3" "SHA512" OFF \
+                        "4" "AES-128-GCM" OFF \
+                        "5" "AES-256-GCM" OFF \
+                        "6" "ChaCha20" OFF \
+                        "7" "ChaCha20-Poly1305" OFF \
+                        "8" "Test All Options" OFF 3>&1 1>&2 2>&3)
+
+                    # Check if the user pressed Cancel
+                    if [ $? -ne 0 ]; then
+                        break
+                    fi
+
+                    # Clear previous openssl choices
+                    sed -i '/CONFIG_OPENSSL_OPTION/d' .config
+
+                    # Save selected openssl choices
+                    for option in $OPENSSL_CHOICES; do
+                        case $option in
+                            "\"1\"")
+                                echo "CONFIG_OPENSSL_OPTION_1=y" >> .config
+                                ;;
+                            "\"2\"")
+                                echo "CONFIG_OPENSSL_OPTION_2=y" >> .config
+                                ;;
+                            "\"3\"")
+                                echo "CONFIG_OPENSSL_OPTION_3=y" >> .config
+                                ;;
+                            "\"4\"")
+                                echo "CONFIG_OPENSSL_OPTION_4=y" >> .config
+                                ;;
+                            "\"5\"")
+                                echo "CONFIG_OPENSSL_OPTION_5=y" >> .config
+                                ;;
+                            "\"6\"")
+                                echo "CONFIG_OPENSSL_OPTION_6=y" >> .config
+                                ;;
+                            "\"7\"")
+                                echo "CONFIG_OPENSSL_OPTION_7=y" >> .config
+                                ;;
+                            "\"8\"")
+                                echo "CONFIG_OPENSSL_OPTION_8=y" >> .config
                                 ;;
                         esac
                     done

@@ -413,3 +413,51 @@ endmenu
 endif
 
 endmenu
+
+menu "openssl"
+
+config OPENSSL
+    bool "Enable openssl"
+    default n
+
+if OPENSSL
+
+menu "Algorithm"
+
+config OPENSSL_OPTION_1
+    bool "1: RSA4096"
+    default n
+
+config OPENSSL_OPTION_2
+    bool "2: SHA256"
+    default n
+
+config OPENSSL_OPTION_3
+    bool "3: SHA512"
+    default n
+
+config OPENSSL_OPTION_4
+    bool "4: AES-128-GCM"
+    default n
+
+config OPENSSL_OPTION_5
+    bool "5: AES-256-GCM"
+    default n
+
+config OPENSSL_OPTION_6
+    bool "6: ChaCha20"
+    default n
+
+config OPENSSL_OPTION_7
+    bool "7: ChaCha20-Poly1305"
+    default n
+
+config NGINX_OPTION_8
+    bool "8: Test All Options"
+    default n
+
+endmenu
+
+endif
+
+endmenu

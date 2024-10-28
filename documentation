@@ -13,6 +13,8 @@ Description
 
 •  pts/redis		: The Redis benchmark evaluates the performance of Redis, an in-memory data structure store. It measures throughput and latency for various data operations. 
 
+•  pts/openssl		: The OpenSSL benchmark evaluates the cryptographic performance of a system by testing the speed of various encryption and decryption operations.
+
 Getting Started
 ---------------
 

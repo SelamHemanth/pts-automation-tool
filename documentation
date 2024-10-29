@@ -17,6 +17,8 @@ Description
 
 •  pts/sysbench		: Sysbench is a multi-purpose benchmark tool used to evaluate the performance of the CPU, memory, I/O, and database systems. It is commonly used for MySQL performance testing.
 
+•  pts/pennant		: Pennant is a benchmark tool for assessing high-performance computing (HPC) systems. It focuses on computational fluid dynamics (CFD) and other scientific computing workloads.
+
 Getting Started
 ---------------
 

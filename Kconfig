@@ -489,3 +489,31 @@ endmenu
 endif
 
 endmenu
+
+menu "pennant"
+
+config PENNANT
+    bool "Enable pennant"
+    default n
+
+if PENNANT
+
+menu "Test"
+
+config PENNANT_OPTION_1
+    bool "1: leblancbig"
+    default n
+
+config PENNANT_OPTION_2
+    bool "2: sedovbig"
+    default n
+
+config PENNANT_OPTION_3
+    bool "3: Test All Options"
+    default n
+
+endmenu
+
+endif
+
+endmenu

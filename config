@@ -12,7 +12,8 @@ while true; do
         "stress-ng" "Enable stress-ng" OFF \
         "redis" "Enable redis" OFF \
         "openssl" "Enable openssl" OFF \
-        "sysbench" "Enable sysbench" OFF 3>&1 1>&2 2>&3)
+        "sysbench" "Enable sysbench" OFF \
+	"pennant" "Enable pennant" OFF 3>&1 1>&2 2>&3)
 
     # Process main menu choices
     for choice in $MAIN_CHOICES; do
@@ -654,6 +655,64 @@ while true; do
                                 ;;
                             "\"3\"")
                                 echo "CONFIG_SYSBENCH_OPTION_3=y" >> .config
+                                ;;
+                        esac
+                    done
+
+                    # Ask if the user wants to save, go back, or exit
+                    SAVE_EXIT=$(whiptail --title "Save and Exit" --menu "Choose an option:" 15 50 4 \
+                        "1" "Save and Continue" \
+                        "2" "Save and Exit" \
+                        "3" "Back to Main Menu" \
+                        "4" "Exit" 3>&1 1>&2 2>&3)
+
+                    case $SAVE_EXIT in
+                        "1")
+                            echo "Configuration saved."
+                            break
+                            ;;
+                        "2")
+                            echo "Configuration saved."
+                            exit 0
+                            ;;
+                        "3")
+                            break
+                            ;;
+                        "4")
+                            exit 0
+                            ;;
+                    esac
+                done
+                ;;
+            "\"pennant\"")
+                echo "CONFIG_PENNANT=y" >> .config
+                # Submenu for pennant
+                while true; do
+                    PENNANT_CHOICES=$(whiptail --title "pennant Configuration" --checklist "Choose options (use Space to select/deselect, use Tab to ok/cancel):" 20 50 10 \
+                        "Test:" "" OFF \
+                        "1" "leblancbig" OFF \
+                        "2" "sedovbig" OFF \
+                        "3" "Test All Options" OFF 3>&1 1>&2 2>&3)
+
+                    # Check if the user pressed Cancel
+                    if [ $? -ne 0 ]; then
+                        break
+                    fi
+
+                    # Clear previous pennant choices
+                    sed -i '/CONFIG_PENNANT_OPTION/d' .config
+
+                    # Save selected pennant choices
+                    for option in $PENNANT_CHOICES; do
+                        case $option in
+                            "\"1\"")
+                                echo "CONFIG_PENNANT_OPTION_1=y" >> .config
+                                ;;
+                            "\"2\"")
+                                echo "CONFIG_PENNANT_OPTION_2=y" >> .config
+                                ;;
+                            "\"3\"")
+                                echo "CONFIG_PENNANT_OPTION_3=y" >> .config
                                 ;;
                         esac
                     done

@@ -11,7 +11,8 @@ while true; do
         "pgbench" "Enable pgbench" OFF \
         "stress-ng" "Enable stress-ng" OFF \
         "redis" "Enable redis" OFF \
-        "openssl" "Enable openssl" OFF 3>&1 1>&2 2>&3)
+        "openssl" "Enable openssl" OFF \
+        "sysbench" "Enable sysbench" OFF 3>&1 1>&2 2>&3)
 
     # Process main menu choices
     for choice in $MAIN_CHOICES; do
@@ -595,6 +596,64 @@ while true; do
                                 ;;
                             "\"8\"")
                                 echo "CONFIG_OPENSSL_OPTION_8=y" >> .config
+                                ;;
+                        esac
+                    done
+
+                    # Ask if the user wants to save, go back, or exit
+                    SAVE_EXIT=$(whiptail --title "Save and Exit" --menu "Choose an option:" 15 50 4 \
+                        "1" "Save and Continue" \
+                        "2" "Save and Exit" \
+                        "3" "Back to Main Menu" \
+                        "4" "Exit" 3>&1 1>&2 2>&3)
+
+                    case $SAVE_EXIT in
+                        "1")
+                            echo "Configuration saved."
+                            break
+                            ;;
+                        "2")
+                            echo "Configuration saved."
+                            exit 0
+                            ;;
+                        "3")
+                            break
+                            ;;
+                        "4")
+                            exit 0
+                            ;;
+                    esac
+                done
+                ;;
+            "\"sysbench\"")
+                echo "CONFIG_SYSBENCH=y" >> .config
+                # Submenu for sysbench
+                while true; do
+                    SYSBENCH_CHOICES=$(whiptail --title "sysbench Configuration" --checklist "Choose options (use Space to select/deselect, use Tab to ok/cancel):" 20 50 10 \
+                        "Test:" "" OFF \
+                        "1" "CPU" OFF \
+                        "2" "RAM / Memory" OFF \
+                        "3" "Test All Options" OFF 3>&1 1>&2 2>&3)
+
+                    # Check if the user pressed Cancel
+                    if [ $? -ne 0 ]; then
+                        break
+                    fi
+
+                    # Clear previous sysbench choices
+                    sed -i '/CONFIG_SYSBENCH_OPTION/d' .config
+
+                    # Save selected sysbench choices
+                    for option in $SYSBENCH_CHOICES; do
+                        case $option in
+                            "\"1\"")
+                                echo "CONFIG_SYSBENCH_OPTION_1=y" >> .config
+                                ;;
+                            "\"2\"")
+                                echo "CONFIG_SYSBENCH_OPTION_2=y" >> .config
+                                ;;
+                            "\"3\"")
+                                echo "CONFIG_SYSBENCH_OPTION_3=y" >> .config
                                 ;;
                         esac
                     done

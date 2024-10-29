@@ -151,6 +151,13 @@ saveconfig:
 	@sed -i 's/,$$//' .config.options
 	@echo "" >> .config.options
 
+	@echo -n "SYSBENCH_OPTIONS=" >> .config.options
+	@if grep -q "CONFIG_SYSBENCH_OPTION_1=y" .config; then echo -n "1," >> .config.options; fi
+	@if grep -q "CONFIG_SYSBENCH_OPTION_2=y" .config; then echo -n "2," >> .config.options; fi	
+	@if grep -q "CONFIG_SYSBENCH_OPTION_3=y" .config; then echo -n "3," >> .config.options; fi
+	@sed -i 's/,$$//' .config.options
+	@echo "" >> .config.options
+
 	@cat .config.options
 	@echo "Configuration saved to .config.options"
 
@@ -180,6 +187,11 @@ run: saveconfig
 	else \
 		echo "CONFIG_OPENSSL is not enabled in .config. Skipping test."; \
 	fi
+	@if grep -q "CONFIG_SYSBENCH=y" .config; then \
+		./runs/pts_sysbench; \
+	else \
+		echo "CONFIG_SYSBENCH is not enabled in .config. Skipping test."; \
+	fi
 
 install:
 	@host_distro_out=$$(cat /etc/os-release); \
@@ -189,8 +201,7 @@ install:
 	case "$${distroID}" in \
 		ubuntu) \
 			echo "Installing packages for ubuntu"; \
-			sudo apt update; \
-			sudo apt install -y sshpass git gcc make automake fakeroot build-essential ncurses-dev pkg-config expect xz-utils libssl-dev libelf-dev bc flex bison rpm dwarves lz4 python3-rpm software-properties-common cmake libpcre3-dev php-cli php-xml php-json php-zip kconfig-frontends; \
+			sudo apt install -y libaio-dev mesa-utils vulkan-tools unzip apt-file git gcc make automake fakeroot build-essential libncurses-dev pkg-config expect xz-utils libssl-dev libelf-dev bc flex bison rpm dwarves lz4 python3-rpm software-properties-common cmake libpcre3-dev php-cli php-xml php-json php-zip kconfig-frontends; \
 			;; \
 		centos|rocky|openEuler|anolis) \
 			echo "Installing packages for centos/rocky"; \

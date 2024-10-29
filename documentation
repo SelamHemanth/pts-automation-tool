@@ -15,6 +15,8 @@ Description
 
 •  pts/openssl		: The OpenSSL benchmark evaluates the cryptographic performance of a system by testing the speed of various encryption and decryption operations.
 
+•  pts/sysbench		: Sysbench is a multi-purpose benchmark tool used to evaluate the performance of the CPU, memory, I/O, and database systems. It is commonly used for MySQL performance testing.
+
 Getting Started
 ---------------
 

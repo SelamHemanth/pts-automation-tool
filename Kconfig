@@ -461,3 +461,31 @@ endmenu
 endif
 
 endmenu
+
+menu "sysbench"
+
+config SYSBENCH
+    bool "Enable sysbench"
+    default n
+
+if SYSBENCH
+
+menu "Test"
+
+config SYSBENCH_OPTION_1
+    bool "1: CPU"
+    default n
+
+config SYSBENCH_OPTION_2
+    bool "2: RAM / Memory"
+    default n
+
+config SYSBENCH_OPTION_3
+    bool "3: Test All Options"
+    default n
+
+endmenu
+
+endif
+
+endmenu

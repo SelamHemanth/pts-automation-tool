@@ -517,3 +517,43 @@ endmenu
 endif
 
 endmenu
+
+menu "memcached"
+
+config MEMCACHED
+    bool "Enable memcached"
+    default n
+
+if MEMCACHED
+
+menu "Set To Get Ratio"
+
+config MEMCACHED_OPTION_1
+    bool "1: 1:100"
+    default n
+
+config MEMCACHED_OPTION_2
+    bool "2: 1:10"
+    default n
+
+config MEMCACHED_OPTION_3
+    bool "3: 1:5"
+    default n
+
+config MEMCACHED_OPTION_4
+    bool "4: 1:1"
+    default n
+
+config MEMCACHED_OPTION_5
+    bool "5: 5:1"
+    default n
+
+config MEMCACHED_OPTION_6
+    bool "6: Test All Options"
+    default n
+
+endmenu
+
+endif
+
+endmenu

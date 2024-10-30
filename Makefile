@@ -165,6 +165,16 @@ saveconfig:
 	@sed -i 's/,$$//' .config.options
 	@echo "" >> .config.options
 
+	@echo -n "MEMCACHED_OPTIONS=" >> .config.options
+	@if grep -q "CONFIG_MEMCACHED_OPTION_1=y" .config; then echo -n "1," >> .config.options; fi
+	@if grep -q "CONFIG_MEMCACHED_OPTION_2=y" .config; then echo -n "2," >> .config.options; fi
+	@if grep -q "CONFIG_MEMCACHED_OPTION_3=y" .config; then echo -n "3," >> .config.options; fi
+	@if grep -q "CONFIG_MEMCACHED_OPTION_4=y" .config; then echo -n "4," >> .config.options; fi
+	@if grep -q "CONFIG_MEMCACHED_OPTION_5=y" .config; then echo -n "5," >> .config.options; fi
+	@if grep -q "CONFIG_MEMCACHED_OPTION_6=y" .config; then echo -n "6," >> .config.options; fi
+	@sed -i 's/,$$//' .config.options
+	@echo "" >> .config.options
+
 	@cat .config.options
 	@echo "Configuration saved to .config.options"
 
@@ -204,6 +214,11 @@ run: saveconfig
 	else \
 		echo "CONFIG_PENNANT is not enabled in .config. Skipping test."; \
 	fi
+	@if grep -q "CONFIG_MEMCACHED=y" .config; then \
+		./runs/pts_memcached; \
+	else \
+		echo "CONFIG_MEMCACHED is not enabled in .config. Skipping test."; \
+	fi
 
 install:
 	@host_distro_out=$$(cat /etc/os-release); \
@@ -217,7 +232,7 @@ install:
 			;; \
 		centos|rocky|openEuler|anolis) \
 			echo "Installing packages for centos/rocky"; \
-			sudo yum install -y libjpeg-turbo-devel libjpeg-devel libicu-devel expect newt epel-release gcc git vim time gcc-c++ kernel-devel perl make numactl openssl openssl-devel libmpc mpfr ncurses-devel bison tar rsync libstdc++-devel libtool bison flex zlib zlib-devel pcre-devel openssl-devel elfutils-libelf-devel ncurses-devel createrepo rpm-build rpmdevtools cmake pcre-devel; \
+			sudo yum install -y libevent-devel libjpeg-turbo-devel libjpeg-devel libicu-devel expect newt epel-release gcc git vim time gcc-c++ kernel-devel perl make numactl openssl openssl-devel libmpc mpfr ncurses-devel bison tar rsync libstdc++-devel libtool bison flex zlib zlib-devel pcre-devel openssl-devel elfutils-libelf-devel ncurses-devel createrepo rpm-build rpmdevtools cmake pcre-devel; \
 			sudo dnf install -y php-cli php-xml php-json; \
 			;; \
 		*) \

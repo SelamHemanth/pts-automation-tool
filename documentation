@@ -19,6 +19,8 @@ Description
 
 •  pts/pennant		: Pennant is a benchmark tool for assessing high-performance computing (HPC) systems. It focuses on computational fluid dynamics (CFD) and other scientific computing workloads.
 
+•  pts/memcached	: The Memcached benchmark evaluates the performance of Memcached, a distributed memory caching system. It measures the speed of storing and retrieving data from the cache.
+
 Getting Started
 ---------------
 

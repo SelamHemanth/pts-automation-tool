@@ -14,7 +14,8 @@ while true; do
         "openssl" "Enable openssl" OFF \
         "sysbench" "Enable sysbench" OFF \
 	"pennant" "Enable pennant" OFF \
-	"memcached" "Enable memcached" OFF 3>&1 1>&2 2>&3)
+	"memcached" "Enable memcached" OFF \
+	"hadoop" "Enable hadoop" OFF 3>&1 1>&2 2>&3)
 
     # Process main menu choices
     for choice in $MAIN_CHOICES; do
@@ -784,6 +785,119 @@ while true; do
                                 ;;
                             "\"6\"")
                                 echo "CONFIG_MEMCACHED_OPTION_6=y" >> .config
+                                ;;
+                        esac
+                    done
+
+                    # Ask if the user wants to save, go back, or exit
+                    SAVE_EXIT=$(whiptail --title "Save and Exit" --menu "Choose an option:" 15 50 4 \
+                        "1" "Save and Continue" \
+                        "2" "Save and Exit" \
+                        "3" "Back to Main Menu" \
+                        "4" "Exit" 3>&1 1>&2 2>&3)
+
+                    case $SAVE_EXIT in
+                        "1")
+                            echo "Configuration saved."
+                            break
+                            ;;
+                        "2")
+                            echo "Configuration saved."
+                            exit 0
+                            ;;
+                        "3")
+                            break
+                            ;;
+                        "4")
+                            exit 0
+                            ;;
+                    esac
+                done
+                ;;
+            "\"hadoop\"")
+                echo "CONFIG_HADOOP=y" >> .config
+                # Submenu for hadoop
+                while true; do
+                    HADOOP_CHOICES=$(whiptail --title "hadoop Configuration" --checklist "Choose options (use Space to select/deselect, use Tab to ok/cancel):" 20 50 10 \
+                        "Operation:" "" OFF \
+                        "1" "Create" OFF \
+                        "2" "Open" OFF \
+                        "3" "Delete" OFF \
+                        "4" "File Status" OFF \
+                        "5" "Rename" OFF \
+                        "6" "Test All Options" OFF \
+                        "" "" OFF\
+                        "Threads:" "" OFF \
+                        "7" "20" OFF \
+                        "8" "50" OFF \
+                        "9" "100" OFF \
+			"10" "500" OFF \
+			"11" "1000" OFF \
+			"12" "Test All Options" OFF \
+			"Files:" "" OFF \
+			"13" "100000" OFF \
+			"14" "1000000" OFF \
+			"15" "10000000" OFF \
+                        "16" "Test All Options" OFF 3>&1 1>&2 2>&3)
+
+                    # Check if the user pressed Cancel
+                    if [ $? -ne 0 ]; then
+                        break
+                    fi
+
+                    # Clear previous hadoop choices
+                    sed -i '/CONFIG_HADOOP_OPTION/d' .config
+
+                    # Save selected hadoop choices
+                    for option in $HADOOP_CHOICES; do
+                        case $option in
+                            "\"1\"")
+                                echo "CONFIG_HADOOP_OPTION_1=y" >> .config
+                                ;;
+                            "\"2\"")
+                                echo "CONFIG_HADOOP_OPTION_2=y" >> .config
+                                ;;
+                            "\"3\"")
+                                echo "CONFIG_HADOOP_OPTION_3=y" >> .config
+                                ;;
+                            "\"4\"")
+                                echo "CONFIG_HADOOP_OPTION_4=y" >> .config
+                                ;;
+                            "\"5\"")
+                                echo "CONFIG_HADOOP_OPTION_5=y" >> .config
+                                ;;
+                            "\"6\"")
+                                echo "CONFIG_HADOOP_OPTION_6=y" >> .config
+                                ;;
+                            "\"7\"")
+                                echo "CONFIG_HADOOP_OPTION_7=y" >> .config
+                                ;;
+                            "\"8\"")
+                                echo "CONFIG_HADOOP_OPTION_8=y" >> .config
+                                ;;
+                            "\"9\"")
+                                echo "CONFIG_HADOOP_OPTION_9=y" >> .config
+                                ;;
+                            "\"10\"")
+                                echo "CONFIG_HADOOP_OPTION_10=y" >> .config
+                                ;;
+                            "\"11\"")
+                                echo "CONFIG_HADOOP_OPTION_11=y" >> .config
+                                ;;
+                            "\"12\"")
+                                echo "CONFIG_HADOOP_OPTION_12=y" >> .config
+                                ;;
+                            "\"13\"")
+                                echo "CONFIG_HADOOP_OPTION_13=y" >> .config
+                                ;;
+                            "\"14\"")
+                                echo "CONFIG_HADOOP_OPTION_14=y" >> .config
+                                ;;
+                            "\"15\"")
+                                echo "CONFIG_HADOOP_OPTION_15=y" >> .config
+                                ;;
+                            "\"16\"")
+                                echo "CONFIG_HADOOP_OPTION_16=y" >> .config
                                 ;;
                         esac
                     done

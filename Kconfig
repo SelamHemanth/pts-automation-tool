@@ -557,3 +557,91 @@ endmenu
 endif
 
 endmenu
+
+menu "hadoop"
+
+config HADOOP
+    bool "Enable hadoop"
+    default n
+
+if HADOOP
+
+menu "Operation"
+
+config HADOOP_OPTION_1
+    bool "1: Create"
+    default n
+
+config HADOOP_OPTION_2
+    bool "2: Open"
+    default n
+
+config HADOOP_OPTION_3
+    bool "3: Delete"
+    default n
+
+config HADOOP_OPTION_4
+    bool "4: File Status"
+    default n
+
+config HADOOP_OPTION_5
+    bool "5: Rename"
+    default n
+
+config REDIS_OPTION_6
+    bool "6: Test All Options"
+    default n
+
+endmenu
+
+menu "Threads"
+
+config HADOOP_OPTION_7
+    bool "1: 20"
+    default n
+
+config HADOOP_OPTION_8
+    bool "2: 50"
+    default n
+
+config HADOOP_OPTION_9
+    bool "3: 100"
+    default n
+
+config HADOOP_OPTION_10
+    bool "4: 500"
+    default n
+
+config HADOOP_OPTION_11
+    bool "5: 1000"
+    default n
+
+config HADOOP_OPTION_12
+    bool "6: Test All Options"
+    default n
+
+endmenu
+
+menu "Files"
+
+config HADOOP_OPTION_13
+    bool "1: 100000"
+    default n
+
+config HADOOP_OPTION_14
+    bool "2: 1000000"
+    default n
+
+config HADOOP_OPTION_15
+    bool "3: 10000000"
+    default n
+
+config HADOOP_OPTION_16
+    bool "4: Test All Options"
+    default n
+
+endmenu
+
+endif
+
+endmenu

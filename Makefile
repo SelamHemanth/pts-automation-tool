@@ -175,6 +175,34 @@ saveconfig:
 	@sed -i 's/,$$//' .config.options
 	@echo "" >> .config.options
 
+	@echo -n "HADOOP_OPTIONS1=" >> .config.options
+	@if grep -q "CONFIG_HADOOP_OPTION_1=y" .config; then echo -n "1," >> .config.options; fi
+	@if grep -q "CONFIG_HADOOP_OPTION_2=y" .config; then echo -n "2," >> .config.options; fi
+	@if grep -q "CONFIG_HADOOP_OPTION_3=y" .config; then echo -n "3," >> .config.options; fi
+	@if grep -q "CONFIG_HADOOP_OPTION_4=y" .config; then echo -n "4," >> .config.options; fi
+	@if grep -q "CONFIG_HADOOP_OPTION_5=y" .config; then echo -n "5," >> .config.options; fi
+	@if grep -q "CONFIG_HADOOP_OPTION_6=y" .config; then echo -n "6," >> .config.options; fi
+	@sed -i 's/,$$//' .config.options
+	@echo "" >> .config.options
+
+	@echo -n "HADOOP_OPTIONS2=" >> .config.options
+	@if grep -q "CONFIG_HADOOP_OPTION_7=y" .config; then echo -n "1," >> .config.options; fi
+	@if grep -q "CONFIG_HADOOP_OPTION_8=y" .config; then echo -n "2," >> .config.options; fi
+	@if grep -q "CONFIG_HADOOP_OPTION_9=y" .config; then echo -n "3," >> .config.options; fi
+	@if grep -q "CONFIG_HADOOP_OPTION_10=y" .config; then echo -n "4," >> .config.options; fi
+	@if grep -q "CONFIG_HADOOP_OPTION_11=y" .config; then echo -n "5," >> .config.options; fi
+	@if grep -q "CONFIG_HADOOP_OPTION_12=y" .config; then echo -n "6," >> .config.options; fi
+	@sed -i 's/,$$//' .config.options
+	@echo "" >> .config.options
+
+	@echo -n "HADOOP_OPTIONS3=" >> .config.options
+	@if grep -q "CONFIG_HADOOP_OPTION_13=y" .config; then echo -n "1," >> .config.options; fi
+	@if grep -q "CONFIG_HADOOP_OPTION_14=y" .config; then echo -n "2," >> .config.options; fi
+	@if grep -q "CONFIG_HADOOP_OPTION_15=y" .config; then echo -n "3," >> .config.options; fi
+	@if grep -q "CONFIG_HADOOP_OPTION_16=y" .config; then echo -n "4," >> .config.options; fi
+	@sed -i 's/,$$//' .config.options
+	@echo "" >> .config.options
+
 	@cat .config.options
 	@echo "Configuration saved to .config.options"
 
@@ -219,6 +247,11 @@ run: saveconfig
 	else \
 		echo "CONFIG_MEMCACHED is not enabled in .config. Skipping test."; \
 	fi
+	@if grep -q "CONFIG_HADOOP=y" .config; then \
+		./runs/pts_hadoop; \
+	else \
+		echo "CONFIG_HADOOP is not enabled in .config. Skipping test."; \
+	fi
 
 install:
 	@host_distro_out=$$(cat /etc/os-release); \
@@ -232,7 +265,7 @@ install:
 			;; \
 		centos|rocky|openEuler|anolis) \
 			echo "Installing packages for centos/rocky"; \
-			sudo yum install -y libevent-devel libjpeg-turbo-devel libjpeg-devel libicu-devel expect newt epel-release gcc git vim time gcc-c++ kernel-devel perl make numactl openssl openssl-devel libmpc mpfr ncurses-devel bison tar rsync libstdc++-devel libtool bison flex zlib zlib-devel pcre-devel openssl-devel elfutils-libelf-devel ncurses-devel createrepo rpm-build rpmdevtools cmake pcre-devel; \
+			sudo yum install -y java-openjdk libevent-devel libjpeg-turbo-devel libjpeg-devel libicu-devel expect newt epel-release gcc git vim time gcc-c++ kernel-devel perl make numactl openssl openssl-devel libmpc mpfr ncurses-devel bison tar rsync libstdc++-devel libtool bison flex zlib zlib-devel pcre-devel openssl-devel elfutils-libelf-devel ncurses-devel createrepo rpm-build rpmdevtools cmake pcre-devel; \
 			sudo dnf install -y php-cli php-xml php-json; \
 			;; \
 		*) \

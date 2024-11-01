@@ -1,3 +1,10 @@
+# -----------------------------------------------------------------------------
+# Shell Script for pts_redis
+# Description: This script evaluates the performance of Redis, an open-source, in-memory data structure store used as a database, cache, and message broker.
+# Author: Hemanth Selam
+# Email: Hemanth.Selam@amd.com
+# -----------------------------------------------------------------------------
+
 #!/bin/bash
 
 set -x

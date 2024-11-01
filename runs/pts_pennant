@@ -1,3 +1,10 @@
+# -----------------------------------------------------------------------------
+# Shell Script for pts_pennant
+# Description: This script runs the PTS Pennant performance test, related to the PTS Pennant reward system used in certain applications.
+# Author: Hemanth Selam
+# Email: Hemanth.Selam@amd.com
+# -----------------------------------------------------------------------------
+
 #!/bin/bash
 
 set -x

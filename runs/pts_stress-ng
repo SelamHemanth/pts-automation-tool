@@ -1,3 +1,10 @@
+# -----------------------------------------------------------------------------
+# Shell Script for pts_stress-ng
+# Description: This script uses stress-ng to stress test the system by imposing a configurable amount of CPU, memory, I/O, and disk stress.
+# Author: Hemanth Selam
+# Email: Hemanth.Selam@amd.com
+# -----------------------------------------------------------------------------
+
 #!/bin/bash
 
 set -x

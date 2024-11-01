@@ -52,4 +52,4 @@ make deepclean
 
 ## 👤 Author
 ### Name: `Hemanth Selam`
-### Email: `<hemanth.selam@gmail.com>`
+### Email: `Hemanth.Selam@amd.com`

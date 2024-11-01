@@ -1,3 +1,10 @@
+# -----------------------------------------------------------------------------
+# Shell Script for pts_memcached
+# Description: This script evaluates the performance of Memcached, a high-performance, distributed memory object caching system designed to speed up dynamic web applications by alleviating database load.
+# Author: Hemanth Selam
+# Email: Hemanth.Selam@amd.com
+# -----------------------------------------------------------------------------
+
 #!/bin/bash
 
 set -x

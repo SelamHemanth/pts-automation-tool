@@ -261,11 +261,11 @@ install:
 	case "$${distroID}" in \
 		ubuntu) \
 			echo "Installing packages for ubuntu"; \
-			sudo apt install -y libopenmpi-dev libmpich-dev openmpi-bin libaio-dev mesa-utils vulkan-tools unzip apt-file git gcc make automake fakeroot build-essential libncurses-dev pkg-config expect xz-utils libssl-dev libelf-dev bc flex bison rpm dwarves lz4 python3-rpm software-properties-common cmake libpcre3-dev php-cli php-xml php-json php-zip kconfig-frontends; \
+			sudo apt install -y openssl expat libopenmpi-dev libmpich-dev openmpi-bin libaio-dev mesa-utils vulkan-tools unzip apt-file git gcc make automake fakeroot build-essential libncurses-dev pkg-config expect xz-utils libssl-dev libelf-dev bc flex bison rpm dwarves lz4 python3-rpm software-properties-common cmake libpcre3-dev php-cli php-xml php-json php-zip kconfig-frontends; \
 			;; \
 		centos|rocky|openEuler|anolis) \
 			echo "Installing packages for centos/rocky"; \
-			sudo yum install -y java-openjdk libevent-devel libjpeg-turbo-devel libjpeg-devel libicu-devel expect newt epel-release gcc git vim time gcc-c++ kernel-devel perl make numactl openssl openssl-devel libmpc mpfr ncurses-devel bison tar rsync libstdc++-devel libtool bison flex zlib zlib-devel pcre-devel openssl-devel elfutils-libelf-devel ncurses-devel createrepo rpm-build rpmdevtools cmake pcre-devel; \
+			sudo yum install -y expat unzip java-openjdk libevent-devel libjpeg-turbo-devel libjpeg-devel libicu-devel expect newt epel-release gcc git vim time gcc-c++ kernel-devel perl make numactl openssl openssl-devel libmpc mpfr ncurses-devel bison tar rsync libstdc++-devel libtool bison flex zlib zlib-devel pcre-devel  elfutils-libelf-devel ncurses-devel createrepo rpm-build rpmdevtools cmake pcre-devel; \
 			sudo dnf install -y php-cli php-xml php-json; \
 			;; \
 		*) \

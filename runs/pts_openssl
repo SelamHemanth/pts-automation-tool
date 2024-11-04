@@ -1,11 +1,11 @@
+#!/bin/bash
+
 # -----------------------------------------------------------------------------
 # Shell Script for pts_openssl
 # Description: This script measures the performance of OpenSSL, an open-source toolkit implementing SSL and TLS protocols.
 # Author: Hemanth Selam
 # Email: Hemanth.Selam@amd.com
 # -----------------------------------------------------------------------------
-
-#!/bin/bash
 
 set -x
 

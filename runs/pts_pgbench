@@ -1,11 +1,11 @@
+#!/bin/bash
+
 # -----------------------------------------------------------------------------
 # Shell Script for pts_pgbench
 # Description: This script runs benchmark tests on PostgreSQL using pgbench, a program that executes a sequence of SQL commands repeatedly to measure the average transaction rate.
 # Author: Hemanth Selam
 # Email: Hemanth.Selam@amd.com
 # -----------------------------------------------------------------------------
-
-#!/bin/bash
 
 set -x
 

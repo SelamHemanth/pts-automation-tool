@@ -1,11 +1,11 @@
+#!/bin/bash
+
 # -----------------------------------------------------------------------------
 # Shell Script for pts_sysbench
 # Description: This script uses Sysbench to test CPU and memory performance, a scriptable multi-threaded benchmark tool based on LuaJIT.
 # Author: Hemanth Selam
 # Email: Hemanth.Selam@amd.com
 # -----------------------------------------------------------------------------
-
-#!/bin/bash
 
 set -x
 

@@ -1,11 +1,11 @@
+#!/bin/bash
+
 # -----------------------------------------------------------------------------
 # Shell Script for pts_nginx
 # Description: This script tests the performance of the Nginx web server, a lightweight HTTP and reverse proxy server known for its high performance and low resource consumption.
 # Author: Hemanth Selam
 # Email: Hemanth.Selam@amd.com
 # -----------------------------------------------------------------------------
-
-#!/bin/bash
 
 set -x
 

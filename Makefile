@@ -1,4 +1,4 @@
-.PHONY: menuconfig all saveconfig run install clean deepclean showresult saveresult
+.PHONY: menuconfig all saveconfig run install clean distclean showresult saveresult
 
 # Define the path where the test result directories are located
 RESULTS_PATH := $(HOME)/.phoronix-test-suite/test-results
@@ -45,27 +45,26 @@ saveconfig:
 	@if grep -q "CONFIG_PGBENCH_OPTION_4=y" .config; then echo -n "4," >> .config.options; fi
 	@if grep -q "CONFIG_PGBENCH_OPTION_5=y" .config; then echo -n "5," >> .config.options; fi
 	@if grep -q "CONFIG_PGBENCH_OPTION_6=y" .config; then echo -n "6," >> .config.options; fi
-	@if grep -q "CONFIG_PGBENCH_OPTION_7=y" .config; then echo -n "7," >> .config.options; fi
 	@sed -i 's/,$$//' .config.options
 	@echo "" >> .config.options
 
 	@echo -n "PGBENCH_OPTIONS2=" >> .config.options
-	@if grep -q "CONFIG_PGBENCH_OPTION_8=y" .config; then echo -n "1," >> .config.options; fi
-	@if grep -q "CONFIG_PGBENCH_OPTION_9=y" .config; then echo -n "2," >> .config.options; fi
-	@if grep -q "CONFIG_PGBENCH_OPTION_10=y" .config; then echo -n "3," >> .config.options; fi
-	@if grep -q "CONFIG_PGBENCH_OPTION_11=y" .config; then echo -n "4," >> .config.options; fi
-	@if grep -q "CONFIG_PGBENCH_OPTION_12=y" .config; then echo -n "5," >> .config.options; fi
-	@if grep -q "CONFIG_PGBENCH_OPTION_13=y" .config; then echo -n "6," >> .config.options; fi
-	@if grep -q "CONFIG_PGBENCH_OPTION_14=y" .config; then echo -n "7," >> .config.options; fi
-	@if grep -q "CONFIG_PGBENCH_OPTION_15=y" .config; then echo -n "8," >> .config.options; fi
-	@if grep -q "CONFIG_PGBENCH_OPTION_16=y" .config; then echo -n "9," >> .config.options; fi
+	@if grep -q "CONFIG_PGBENCH_OPTION_7=y" .config; then echo -n "1," >> .config.options; fi
+	@if grep -q "CONFIG_PGBENCH_OPTION_8=y" .config; then echo -n "2," >> .config.options; fi
+	@if grep -q "CONFIG_PGBENCH_OPTION_9=y" .config; then echo -n "3," >> .config.options; fi
+	@if grep -q "CONFIG_PGBENCH_OPTION_10=y" .config; then echo -n "4," >> .config.options; fi
+	@if grep -q "CONFIG_PGBENCH_OPTION_11=y" .config; then echo -n "5," >> .config.options; fi
+	@if grep -q "CONFIG_PGBENCH_OPTION_12=y" .config; then echo -n "6," >> .config.options; fi
+	@if grep -q "CONFIG_PGBENCH_OPTION_13=y" .config; then echo -n "7," >> .config.options; fi
+	@if grep -q "CONFIG_PGBENCH_OPTION_14=y" .config; then echo -n "8," >> .config.options; fi
+	@if grep -q "CONFIG_PGBENCH_OPTION_15=y" .config; then echo -n "9," >> .config.options; fi
 	@sed -i 's/,$$//' .config.options
 	@echo "" >> .config.options
 
 	@echo -n "PGBENCH_OPTIONS3=" >> .config.options
-	@if grep -q "CONFIG_PGBENCH_OPTION_17=y" .config; then echo -n "1," >> .config.options; fi
-	@if grep -q "CONFIG_PGBENCH_OPTION_18=y" .config; then echo -n "2," >> .config.options; fi
-	@if grep -q "CONFIG_PGBENCH_OPTION_19=y" .config; then echo -n "3," >> .config.options; fi
+	@if grep -q "CONFIG_PGBENCH_OPTION_16=y" .config; then echo -n "1," >> .config.options; fi
+	@if grep -q "CONFIG_PGBENCH_OPTION_17=y" .config; then echo -n "2," >> .config.options; fi
+	@if grep -q "CONFIG_PGBENCH_OPTION_18=y" .config; then echo -n "3," >> .config.options; fi
 	@sed -i 's/,$$//' .config.options
 	@echo "" >> .config.options
 
@@ -270,13 +269,13 @@ install:
 			;; \
 		anolis) \
 			echo "Installing packages for anolis" \
-			sudo yum install -y expat unzip java-openjdk libevent-devel libjpeg-turbo-devel libjpeg-devel libicu-devel expect newt epel-release gcc git vim time gcc-c++ kernel-devel perl make numactl openssl openssl-devel libmpc mpfr ncurses-devel bison tar rsync libstdc++-devel libtool bison flex zlib zlib-devel pcre-devel  elfutils-libelf-devel ncurses-devel createrepo rpm-build rpmdevtools cmake pcre-devel; \
+			sudo yum install -y openmpi-devel openmpi pcre-devel libevent-devel expect expat unzip java-openjdk libevent-devel libjpeg-turbo-devel libjpeg-devel libicu-devel expect newt epel-release gcc git vim time gcc-c++ kernel-devel perl make numactl openssl openssl-devel libmpc mpfr ncurses-devel bison tar rsync libstdc++-devel libtool bison flex zlib zlib-devel pcre-devel  elfutils-libelf-devel ncurses-devel createrepo rpm-build rpmdevtools cmake pcre-devel; \
 			sudo dnf install -y php-cli php-xml; \
                         ;; \
 		openEuler) \
 			echo "Installing packages for openEuler" \
-			sudo yum install -y expat unzip java-openjdk libevent-devel libjpeg-turbo-devel libjpeg-devel libicu-devel expect newt epel-release gcc git vim time gcc-c++ kernel-devel perl make numactl openssl openssl-devel libmpc mpfr ncurses-devel bison tar rsync libstdc++-devel libtool bison flex zlib zlib-devel pcre-devel  elfutils-libelf-devel ncurses-devel createrepo rpm-build rpmdevtools cmake pcre-devel; \
-			sudo dnf install -y php-cli php-xml php-json; \
+			sudo yum install -y openmpi-devel openmpi pcre-devel libevent-devel expect expat unzip java-openjdk libevent-devel libjpeg-turbo-devel libjpeg-devel libicu-devel expect newt epel-release gcc git vim time gcc-c++ kernel-devel perl make numactl openssl openssl-devel libmpc mpfr ncurses-devel bison tar rsync libstdc++-devel libtool bison flex zlib zlib-devel pcre-devel  elfutils-libelf-devel ncurses-devel createrepo rpm-build rpmdevtools cmake pcre-devel; \
+			sudo dnf install -y php-cli php-xml; \
 			;; \
 		*) \
 			echo "Distro not supported or not matched"; \
@@ -310,7 +309,7 @@ clean:
 	@echo "Cleaning the files"
 	find  $(HOME)/.phoronix-test-suite/test-results -mindepth 1 ! -name '*.tar.gz' -exec rm -rf {} +
 
-deepclean:
+distclean:
 	rm -f .config
 	rm -f .config.options
 	rm -f .config.old

@@ -137,6 +137,15 @@ Details:
 
 - Deletes the files in `.phoronix-test-suite/test-results` directory except tar files.
 
+make distclean
+--------------
+
+This target cleans up the configuration and all test results to free up space and keep the environment clean.
+
+Usage:
+    make distclean
+
+
 Author
 ------
 

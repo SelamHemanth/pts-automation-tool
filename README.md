@@ -47,7 +47,7 @@ make clean
 ```
 * Deep clean up:
 ```sh
-make deepclean
+make distclean
 ```
 
 ## 👤 Author

@@ -105,28 +105,27 @@ while true; do
                     PGBENCH_CHOICES=$(whiptail --title "pgbench Configuration" --checklist "Choose options (use Space to select/deselect, use Tab to ok/cancel):" 20 50 10 \
                         "Scaling Factor:" "" OFF \
 			"1" "1" OFF \
-                        "2" "10" OFF \
-                        "3" "100" OFF \
-                        "4" "1000" OFF \
-                        "5" "10000" OFF \
-                        "6" "25000 [Intended for very large servers.]" OFF \
-                        "7" "Test All Options" OFF \
+                        "2" "100" OFF \
+                        "3" "1000" OFF \
+                        "4" "10000" OFF \
+                        "5" "25000 [Intended for very large servers.]" OFF \
+                        "6" "Test All Options" OFF \
 			"" "" OFF\
 			"Clients:" "" OFF \
-                        "8" "1" OFF \
-                        "9" "50" OFF \
-                        "10" "100" OFF \
-                        "11" "250" OFF \
-                        "12" "500" OFF \
-                        "13" "800" OFF \
-                        "14" "1000" OFF \
-                        "15" "5000" OFF \
-                        "16" "Test All Options" OFF \
+                        "7" "1" OFF \
+                        "8" "50" OFF \
+                        "9" "100" OFF \
+                        "10" "250" OFF \
+                        "11" "500" OFF \
+                        "12" "800" OFF \
+                        "13" "1000" OFF \
+                        "14" "5000" OFF \
+                        "15" "Test All Options" OFF \
 			"" "" OFF \
 			"Mode:" "" OFF \
-                        "17" "Read Write" OFF \
-                        "18" "Read Only" OFF \
-                        "19" "Test All Options" OFF 3>&1 1>&2 2>&3)
+                        "16" "Read Write" OFF \
+                        "17" "Read Only" OFF \
+                        "18" "Test All Options" OFF 3>&1 1>&2 2>&3)
 
                     # Check if the user pressed Cancel
                     if [ $? -ne 0 ]; then

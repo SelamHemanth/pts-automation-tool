@@ -61,9 +61,22 @@ run_phoronix_test() {
         expect "Enter a unique name to describe this test run / configuration:" { send "$unique_name\r" }
         expect "New Description:" { send "Automated test run for pts/nginx on this system.\r" }
         expect {
-            "Do you want to view the results in your web browser (Y/n):" { send "n\r"; exp_continue }
-            "Would you like to upload the results to OpenBenchmarking.org (y/n):" { send "n\r"; exp_continue }
-            "Do you want to view the text-based test results? (Y/n):" { send "n\r" }
+                "Do you want to view the results in your web browser (Y/n):" {
+                send_user "Matched web browser prompt\n"
+                send "n\r"
+                exp_continue
+                }
+
+                "Do you want to view the text results of the testing (Y/n):" {
+                send_user "Matched text results prompt\n"
+                send "n\r"
+                exp_continue
+                }
+
+                "Would you like to upload the results to OpenBenchmarking.org (y/n):" {
+                send_user "Matched upload prompt\n"
+                send "n\r"
+                }
         }
         expect eof
 EOF

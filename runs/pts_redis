@@ -86,8 +86,8 @@ EOF
     # Extract data after the test completes
     echo "Extracting data"
     # Path to the XML file
-    XML_FILE="/home/amd/.phoronix-test-suite/test-results/${transformed_result_name}/composite.xml"
-    OPT_FILE="/home/amd/.phoronix-test-suite/test-results/${transformed_result_name}/${transformed_result_name}_result.txt"
+    XML_FILE="$HOME/.phoronix-test-suite/test-results/${transformed_result_name}/composite.xml"
+    OPT_FILE="$HOME/.phoronix-test-suite/test-results/${transformed_result_name}/${transformed_result_name}_result.txt"
     # Extract and print all test results
     extract_results
     echo "Data extraction completed"

@@ -4,7 +4,7 @@ Welcome to the Phoronix Test Suite Automation project! This project automates th
 
 ## 🚀 Getting Started
 
-Follow the instructions below to set up and use the automation scripts. Detailed explanation available in [documentation](https://github.com/SelamHemanth/pts-automation-tool/blob/main/documentation) file.
+Follow the instructions below to set up and use the automation scripts. Detailed explanation available in [documentation](https://github.com/SelamHemanth/pts-automation-tool/blob/jenkins/documentation) file.
 
 ### Prerequisites
 

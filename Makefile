@@ -1,7 +1,7 @@
 .PHONY: menuconfig all saveconfig run install clean distclean showresult saveresult
 
 # Define the path where the test result directories are located
-RESULTS_PATH := $(HOME)/.phoronix-test-suite/test-results
+RESULTS_PATH := /var/lib/phoronix-test-suite/test-results
 
 # Define the common suffix for the result files
 RESULT_SUFFIX := txt
@@ -205,53 +205,6 @@ saveconfig:
 	@cat .config.options
 	@echo "Configuration saved to .config.options"
 
-run: saveconfig
-	@if grep -q "CONFIG_NGINX=y" .config; then \
-		./runs/pts_nginx; \
-	else \
-		echo "CONFIG_NGINX is not enabled in .config. Skipping test."; \
-	fi
-	@if grep -q "CONFIG_PGBENCH=y" .config; then \
-		./runs/pts_pgbench; \
-	else \
-		echo "CONFIG_PGBENCH is not enabled in .config. Skipping test."; \
-	fi
-	@if grep -q "CONFIG_STRESSNG=y" .config; then \
-		./runs/pts_stress-ng; \
-	else \
-		echo "CONFIG_STRESSNG is not enabled in .config. Skipping test."; \
-	fi
-	@if grep -q "CONFIG_REDIS=y" .config; then \
-		./runs/pts_redis; \
-	else \
-		echo "CONFIG_REDIS is not enabled in .config. Skipping test."; \
-	fi
-	@if grep -q "CONFIG_OPENSSL=y" .config; then \
-		./runs/pts_openssl; \
-	else \
-		echo "CONFIG_OPENSSL is not enabled in .config. Skipping test."; \
-	fi
-	@if grep -q "CONFIG_SYSBENCH=y" .config; then \
-		./runs/pts_sysbench; \
-	else \
-		echo "CONFIG_SYSBENCH is not enabled in .config. Skipping test."; \
-	fi
-	@if grep -q "CONFIG_PENNANT=y" .config; then \
-		./runs/pts_pennant; \
-	else \
-		echo "CONFIG_PENNANT is not enabled in .config. Skipping test."; \
-	fi
-	@if grep -q "CONFIG_MEMCACHED=y" .config; then \
-		./runs/pts_memcached; \
-	else \
-		echo "CONFIG_MEMCACHED is not enabled in .config. Skipping test."; \
-	fi
-	@if grep -q "CONFIG_HADOOP=y" .config; then \
-		./runs/pts_hadoop; \
-	else \
-		echo "CONFIG_HADOOP is not enabled in .config. Skipping test."; \
-	fi
-
 install:
 	@host_distro_out=$$(cat /etc/os-release); \
 	echo "OS Release Info: $${host_distro_out}"; \
@@ -313,11 +266,11 @@ saveresult:
 	@./saveresult
 clean:
 	@echo "Cleaning the files"
-	find  $(HOME)/.phoronix-test-suite/test-results -mindepth 1 ! -name '*.tar.gz' -exec rm -rf {} +
+	find  /var/lib/phoronix-test-suite/test-results -mindepth 1 ! -name '*.tar.gz' -exec rm -rf {} +
 
 distclean:
 	rm -f .config
 	rm -f .config.options
 	rm -f .config.old
-	sudo rm -rf $(HOME)/.phoronix-test-suite/test-results/*
+	sudo rm -rf /var/lib/phoronix-test-suite/test-results/*
 

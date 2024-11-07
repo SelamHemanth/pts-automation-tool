@@ -268,13 +268,13 @@ install:
 			sudo dnf install -y php-cli php-xml php-json; \
 			;; \
 		anolis) \
-			echo "Installing packages for anolis" \
-			sudo yum install -y openmpi-devel openmpi pcre-devel libevent-devel expect expat unzip java-openjdk libevent-devel libjpeg-turbo-devel libjpeg-devel libicu-devel expect newt epel-release gcc git vim time gcc-c++ kernel-devel perl make numactl openssl openssl-devel libmpc mpfr ncurses-devel bison tar rsync libstdc++-devel libtool bison flex zlib zlib-devel pcre-devel  elfutils-libelf-devel ncurses-devel createrepo rpm-build rpmdevtools cmake pcre-devel; \
+			echo "Installing packages for anolis"; \
+			sudo yum install -y openmpi-devel openmpi pcre-devel libevent-devel expect expat unzip java-openjdk libevent-devel libjpeg-turbo-devel libjpeg-devel libicu-devel expect newt gcc git vim time gcc-c++ kernel-devel perl make numactl openssl openssl-devel libmpc mpfr ncurses-devel bison tar rsync libstdc++-devel libtool bison flex zlib zlib-devel pcre-devel  elfutils-libelf-devel ncurses-devel createrepo rpm-build rpmdevtools cmake pcre-devel; \
 			sudo dnf install -y php-cli php-xml; \
                         ;; \
 		openEuler) \
-			echo "Installing packages for openEuler" \
-			sudo yum install -y openmpi-devel openmpi pcre-devel libevent-devel expect expat unzip java-openjdk libevent-devel libjpeg-turbo-devel libjpeg-devel libicu-devel expect newt epel-release gcc git vim time gcc-c++ kernel-devel perl make numactl openssl openssl-devel libmpc mpfr ncurses-devel bison tar rsync libstdc++-devel libtool bison flex zlib zlib-devel pcre-devel  elfutils-libelf-devel ncurses-devel createrepo rpm-build rpmdevtools cmake pcre-devel; \
+			echo "Installing packages for openEuler"; \
+			sudo yum install -y openmpi-devel openmpi pcre-devel libevent-devel expect expat unzip java-openjdk libevent-devel libjpeg-turbo-devel libjpeg-devel libicu-devel expect newt gcc git vim time gcc-c++ kernel-devel perl make numactl openssl openssl-devel libmpc mpfr ncurses-devel bison tar rsync libstdc++-devel libtool bison flex zlib zlib-devel pcre-devel  elfutils-libelf-devel ncurses-devel createrepo rpm-build rpmdevtools cmake pcre-devel; \
 			sudo dnf install -y php-cli php-xml; \
 			;; \
 		*) \
@@ -282,11 +282,17 @@ install:
 			exit 1; \
 		;; \
 	esac
-	echo "Downloading the Phoronix Test Suite as a compressed file"; \
-	wget -O /tmp/phoronix-test-suite.tar.xz http://sos-jenkins.amd.com/phoronix_test_suite/phoronix-test-suite.tar.xz; \
-	tar -xJvf /tmp/phoronix-test-suite.tar.xz -C /tmp; \
-	cd /tmp/phoronix-test-suite && sudo ./install-sh; \
-	phoronix-test-suite version
+	@if [ ! -f /usr/bin/phoronix-test-suite ]; then \
+                echo "Phoronix Test Suite not found. Installing..."; \
+                echo "Downloading the Phoronix Test Suite as a compressed file"; \
+                wget -O /tmp/phoronix-test-suite.tar.xz http://sos-jenkins.amd.com/phoronix_test_suite/phoronix-test-suite.tar.xz; \
+                tar -xJvf /tmp/phoronix-test-suite.tar.xz -C /tmp; \
+                cd /tmp/phoronix-test-suite && sudo ./install-sh; \
+                phoronix-test-suite version; \
+        else \
+                echo "Phoronix Test Suite is already installed."; \
+                phoronix-test-suite version; \
+        fi
 
 # Target to display the contents of result files
 showresult:

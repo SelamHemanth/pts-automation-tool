@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# -----------------------------------------------------------------------------
+# Shell Script for saveresult
+# Description: This script creates the tar file of all runs.
+# Author: Hemanth Selam
+# Email: Hemanth.Selam@amd.com
+# -----------------------------------------------------------------------------
+
 # Define the base path where the test result directories are located
 RESULTS_PATH="/var/lib/phoronix-test-suite/test-results"
 

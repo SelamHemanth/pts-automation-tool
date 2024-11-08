@@ -99,10 +99,10 @@ extract_results() {
     echo "==============================" >> $OPT_FILE
     echo "                              " >> $OPT_FILE
     for ((i=1; i<=result_count; i++)); do
-        local connections=$(xmllint --xpath "string(/PhoronixTestSuite/Result[$i]/Arguments)" $XML_FILE | awk '{print $2}')
+        local description=$(xmllint --xpath "string(/PhoronixTestSuite/Result[$i]/Description)" $XML_FILE)
         local value=$(xmllint --xpath "string(/PhoronixTestSuite/Result[$i]/Data/Entry/Value)" $XML_FILE)
-	local scale=$(xmllint --xpath "string(/PhoronixTestSuite/Result[$i]/Data/Entry/Scale)" $XML_FILE)
-        echo "$connections   $value    $scale" >> $OPT_FILE
+	local scale=$(xmllint --xpath "string(/PhoronixTestSuite/Result[$i]/Scale)" $XML_FILE)
+        echo "$description   $value    $scale" >> $OPT_FILE
 	echo "" >> $OPT_FILE
     done
     echo "==============================" >> $OPT_FILE

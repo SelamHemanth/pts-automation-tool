@@ -393,7 +393,7 @@ config REDIS_OPTION_7
     default n
 
 config REDIS_OPTION_8
-    bool "2: 50"
+    bool "2: 500"
     default n
 
 config REDIS_OPTION_9

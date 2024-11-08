@@ -6,17 +6,8 @@ RESULTS_PATH="/var/lib/phoronix-test-suite/test-results"
 # Define the pattern for the tar.gz files
 TAR_PATTERN="pts-run-*.tar.gz"
 
-# Find the highest existing tar.gz file number
-LAST_NUM=$(find "$RESULTS_PATH" -maxdepth 1 -name "$TAR_PATTERN" | sed 's/.*pts-run-\([0-9]*\)\.tar\.gz/\1/' | sort -n | tail -n 1)
-
-if [ -z "$LAST_NUM" ]; then
-    NEXT_NUM=1
-else
-    NEXT_NUM=$((LAST_NUM + 1))
-fi
-
 # Create the tar.gz file with the next number
-TAR_FILE="$RESULTS_PATH/pts-run-$NEXT_NUM.tar.gz"
+TAR_FILE="$RESULTS_PATH/pts-run-result.tar.gz"
 echo "Creating $TAR_FILE..."
 tar -czf "$TAR_FILE" -C "$RESULTS_PATH" --exclude='*.tar.gz' .
 echo "Result saved to $TAR_FILE"

@@ -260,7 +260,7 @@ install:
 	case "$${distroID}" in \
 		ubuntu) \
 			echo "Installing packages for ubuntu"; \
-			sudo apt install -y openssl expat libopenmpi-dev libmpich-dev openmpi-bin libaio-dev mesa-utils vulkan-tools unzip apt-file git gcc make automake fakeroot build-essential libncurses-dev pkg-config expect xz-utils libssl-dev libelf-dev bc flex bison rpm dwarves lz4 python3-rpm software-properties-common cmake libpcre3-dev php-cli php-xml php-json php-zip kconfig-frontends; \
+			sudo apt install -y libapparmor-dev openssl expat libopenmpi-dev libmpich-dev openmpi-bin libaio-dev mesa-utils vulkan-tools unzip apt-file git gcc make automake fakeroot build-essential libncurses-dev pkg-config expect xz-utils libssl-dev libelf-dev bc flex bison rpm dwarves lz4 python3-rpm software-properties-common cmake libpcre3-dev php-cli php-xml php-json php-zip kconfig-frontends; \
 			;; \
 		centos|rocky) \
 			echo "Installing packages for centos/rocky"; \

@@ -584,7 +584,7 @@ config HADOOP_OPTION_5
     bool "5: Rename"
     default n
 
-config REDIS_OPTION_6
+config HADOOP_OPTION_6
     bool "6: Test All Options"
     default n
 

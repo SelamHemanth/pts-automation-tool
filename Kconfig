@@ -448,7 +448,7 @@ config OPENSSL_OPTION_7
     bool "7: ChaCha20-Poly1305"
     default n
 
-config NGINX_OPTION_8
+config OPENSSL_OPTION_8
     bool "8: Test All Options"
     default n
 

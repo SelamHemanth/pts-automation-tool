@@ -12,7 +12,7 @@ Ensure you have `make` installed on your system. The Makefile will handle the re
 
 ## 🛠️ Workflow
 
-1. Copy and paste the `jenkins_pipeline` code in jenkins groovy script console.
+1. Copy and paste the `[jenkins_pipeline](https://github.com/SelamHemanth/pts-automation-tool/blob/jenkins/jenkins_pipeline)` code in jenkins groovy script console.
 2. `Apply` and `Save`.
 3. Choose `Build with Parameters`.
 4. Configure options and Click on `build`.

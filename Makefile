@@ -117,6 +117,11 @@ saveconfig:
 	@if grep -q "CONFIG_STRESSNG_OPTION_46=y" .config; then echo -n "46," >> .config.options; fi
 	@if grep -q "CONFIG_STRESSNG_OPTION_47=y" .config; then echo -n "47," >> .config.options; fi
 	@if grep -q "CONFIG_STRESSNG_OPTION_48=y" .config; then echo -n "48," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_49=y" .config; then echo -n "49," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_50=y" .config; then echo -n "50," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_51=y" .config; then echo -n "51," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_52=y" .config; then echo -n "52," >> .config.options; fi
+	@if grep -q "CONFIG_STRESSNG_OPTION_53=y" .config; then echo -n "53," >> .config.options; fi
 	@sed -i 's/,$$//' .config.options
 	@echo "" >> .config.options
 

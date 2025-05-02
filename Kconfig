@@ -341,7 +341,27 @@ config STRESSNG_OPTION_47
     default n
 
 config STRESSNG_OPTION_48
-    bool "48: Test All Options"
+    bool "48: POSIX Regular Expressions"
+    default n
+
+config STRESSNG_OPTION_49
+    bool "49: Integer Math"
+    default n
+
+config STRESSNG_OPTION_50
+    bool "50: Integer Bit Operations"
+    default n
+
+config STRESSNG_OPTION_51
+    bool "51: Bessel Math Operations"
+    default n
+
+config STRESSNG_OPTION_52
+    bool "52: Hyperbolic Trigonometric Math"
+    default n
+
+config STRESSNG_OPTION_53
+    bool "53: Test All Options"
     default n
 
 endmenu

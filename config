@@ -276,7 +276,12 @@ while true; do
                         "45" "Jpeg Compression" OFF \
                         "46" "Bitonic Integer Sort" OFF \
                         "47" "Radix String Sort" OFF \
-                        "48" "Test All Options" OFF 3>&1 1>&2 2>&3)
+                        "48" "POSIX Regular Expressions" OFF \
+                        "49" "Integer Math" OFF \
+                        "50" "Integer Bit Operations" OFF \
+                        "51" "Bessel Math Operations" OFF \
+                        "52" "Hyperbolic Trigonometric Math" OFF \
+                        "53" "Test All Options" OFF 3>&1 1>&2 2>&3)
 
                     # Check if the user pressed Cancel
                     if [ $? -ne 0 ]; then
@@ -432,6 +437,21 @@ while true; do
                                 ;;
                             "\"48\"")
                                 echo "CONFIG_STRESSNG_OPTION_48=y" >> .config
+                                ;;
+                            "\"49\"")
+                                echo "CONFIG_STRESSNG_OPTION_49=y" >> .config
+                                ;;
+                            "\"50\"")
+                                echo "CONFIG_STRESSNG_OPTION_50=y" >> .config
+                                ;;
+                            "\"51\"")
+                                echo "CONFIG_STRESSNG_OPTION_51=y" >> .config
+                                ;;
+                            "\"52\"")
+                                echo "CONFIG_STRESSNG_OPTION_52=y" >> .config
+                                ;;
+                            "\"53\"")
+                                echo "CONFIG_STRESSNG_OPTION_53=y" >> .config
                                 ;;
                         esac
                     done

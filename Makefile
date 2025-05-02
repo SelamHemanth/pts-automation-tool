@@ -16,7 +16,7 @@ menuconfig:
                         echo "Configuration : $${distroID}"; \
                         kconfig-mconf Kconfig \
                 ;; \
-                centos|rocky|openEuler|anolis) \
+                centos|rocky|openEuler|anolis|opencloudos) \
                         echo "Configuration : $${distroID}"; \
                         ./config \
                 ;; \

@@ -22,6 +22,7 @@ Description
 •  pts/memcached	: The Memcached benchmark evaluates the performance of Memcached, a distributed memory caching system. It measures the speed of storing and retrieving data from the cache.
 
 •  pts/hadoop		: This benchmark measures the performance of Apache Hadoop, focusing on its ability to handle large-scale data processing tasks across distributed computing resources.
+•  pts/compress-7zip           : The compress-7zip test in the Phoronix Test Suite measures CPU performance by benchmarking the speed and efficiency of 7-Zip's compression and decompression algorithms.
 
 Getting Started
 ---------------

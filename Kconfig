@@ -661,3 +661,11 @@ endmenu
 endif
 
 endmenu
+
+menu "compress-7zip"
+
+config COMPRESS7ZIP
+    bool "Enable compress-7zip"
+    default n
+
+endmenu

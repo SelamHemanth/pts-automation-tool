@@ -15,7 +15,8 @@ while true; do
         "sysbench" "Enable sysbench" OFF \
 	"pennant" "Enable pennant" OFF \
 	"memcached" "Enable memcached" OFF \
-	"hadoop" "Enable hadoop" OFF 3>&1 1>&2 2>&3)
+	"hadoop" "Enable hadoop" OFF \
+	"compress-7zip" "Enable compress-7zip" OFF 3>&1 1>&2 2>&3)
 
     # Process main menu choices
     for choice in $MAIN_CHOICES; do
@@ -833,6 +834,9 @@ while true; do
                     esac
                 done
                 ;;
+	    "\"compress-7zip\"")
+		    echo "CONFIG_COMPRESS7ZIP=y" >> .config
+		    ;;
             "\"hadoop\"")
                 echo "CONFIG_HADOOP=y" >> .config
                 # Submenu for hadoop

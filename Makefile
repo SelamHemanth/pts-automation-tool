@@ -256,6 +256,11 @@ run: saveconfig
 	else \
 		echo "CONFIG_HADOOP is not enabled in .config. Skipping test."; \
 	fi
+	@if grep -q "CONFIG_COMPRESS7ZIP=y" .config; then \
+		./runs/pts_compress7zip; \
+	else \
+		echo "CONFIG_COMPRESS7ZIP is not enabled in .config. Skipping test."; \
+	fi
 
 install:
 	@host_distro_out=$$(cat /etc/os-release); \
@@ -274,7 +279,7 @@ install:
 			;; \
 		anolis) \
 			echo "Installing packages for anolis"; \
-			sudo yum install -y openmpi-devel openmpi pcre-devel libevent-devel expect expat unzip java-openjdk libevent-devel libjpeg-turbo-devel libjpeg-devel libicu-devel expect newt gcc git vim time gcc-c++ kernel-devel perl make numactl openssl openssl-devel libmpc mpfr ncurses-devel bison tar rsync libstdc++-devel libtool bison flex zlib zlib-devel pcre-devel  elfutils-libelf-devel ncurses-devel createrepo rpm-build rpmdevtools cmake pcre-devel; \
+			sudo yum install -y openmpi-devel openmpi pcre-devel libevent-devel expect expat unzip java-openjdk libevent-devel libjpeg-turbo-devel libjpeg-devel libicu-devel expect newt gcc git vim time gcc-c++ kernel-devel perl make numactl openssl openssl-devel libmpc mpfr ncurses-devel bison tar rsync libstdc++-devel libtool bison flex zlib zlib-devel pcre-devel  elfutils-libelf-devel ncurses-devel createrepo rpm-build rpmdevtools cmake pcre-devel p7zip p7zip-plugins; \
 			sudo dnf install -y php-cli php-xml; \
                         ;; \
 		openEuler) \
